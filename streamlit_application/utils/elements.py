@@ -52,7 +52,7 @@ def grupo_azul(titolo):
     """
 
     # Display HTML in Streamlit
-    st.components.v1.html(html_code, height=300)
+    st.components.v1.html(html_code, height=180)
 
   
 def out():

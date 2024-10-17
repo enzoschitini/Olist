@@ -4,19 +4,8 @@ import numpy as np
 import plotly.express as px
 import plotly.graph_objects as go
 
-@st.cache_data
-def load_data():
-    df = pd.read_csv('streamlit_streamlit_applicationlication/Olist - E-Commerce Customer Data.csv').drop(columns='Unnamed: 0')
-    return df
-
-# Load the data
-df = load_data()
-
 #df['default_cat'] = df['default']
 #df['default_cat'] = df['default_cat'].astype('object')
-
-st.write('# Olist - E-Commerce Customer Data')
-st.write('## Analytics Setup')
 
 # Função para análise bivariada de variáveis numéricas
 def AB2N(dataframe, x_coluna, y_coluna):
@@ -111,27 +100,3 @@ def AB2C(dataframe, col1, col2, metric):
         legend_title=col2,
     )
     st.plotly_chart(fig)
-
-def main():
-    with st.expander("Ver dataframe"):
-        st.write(df)
-    
-    with st.expander("### Análise bivariada de duas variáveis ​​numéricas"):
-        x_coluna = st.selectbox('Selecione a coluna do eixo X', df.select_dtypes('number').columns, key='x_col_1')
-        y_coluna = st.selectbox('Selecione a coluna do eixo Y', df.select_dtypes('number').columns, key='y_col_1')
-        AB2N(df, x_coluna, y_coluna)
-
-    with st.expander("### Análise bivariada entre uma variável categórica e outra numérica"):
-        x_coluna = st.selectbox('Selecione a coluna do eixo X', df.select_dtypes('object').columns, key='x_col_2')
-        y_coluna = st.selectbox('Selecione a coluna do eixo Y', df.select_dtypes('number').columns, key='y_col_2')
-        num_cat_analysis_bar(df, y_coluna, x_coluna)
-        num_cat_analysis(df, y_coluna, x_coluna)
-
-    with st.expander("### Análise bivariada de duas variáveis ​​categóricas"):
-        x_coluna = st.selectbox('Selecione a coluna do eixo X', df.select_dtypes('object').columns, key='x_col_3')
-        y_coluna = st.selectbox('Selecione a coluna do eixo Y', df.select_dtypes('object').columns, key='y_col_3')
-        #AB2C(df, x_coluna, y_coluna, 'prct')
-        #AB2C(df, x_coluna, y_coluna, 'qtd')
-
-if __name__ == "__main__":
-    main()

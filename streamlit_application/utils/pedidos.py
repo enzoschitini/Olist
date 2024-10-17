@@ -3,6 +3,7 @@ import pandas as pd
 
 import utils.metrics as mtc
 import utils.elements as elements
+import utils.AnalyticsSetup as ast
 
 # App developer:     Enzo Schitini
 # Date:              2 Outubro 2024
@@ -27,6 +28,18 @@ def metricas_pedidos(olist):
 
     st.title(f"Análise dos Pedidos")
 
+    # price freight_value payment_type customer_zone
+
+    # Função para análise bivariada de variáveis numéricas AB2N
+    # Função para análise bivariada entre variável categórica e numérica num_cat_analysis
+    # Função para análise bivariada entre variável categórica e numérica usando um gráfico de barras num_cat_analysis_bar
+    # Função para análise bivariada entre variáveis categóricas AB2C
+
+    ast.AB2N(olist, 'price', 'freight_value')
+    ast.num_cat_analysis_bar(olist, 'price', 'payment_type')
+    ast.AB2C(olist, 'payment_type', 'customer_zone', 'qtd') 
+    ast.AB2C(olist, 'payment_type', 'customer_zone', 'prct') 
+
     col1, col2 = st.columns(2) # [3, 1.5]
 
     with col1:
@@ -34,8 +47,9 @@ def metricas_pedidos(olist):
         with col001:
             st.image('streamlit_application/img/Commerce Illustrations/vctrly-business-illustrations-3-unboxing.png', width=150)
         with col002:
-            elements.grupo_azul(f'Média {dicionario_medias['Kg']}Kg')
-            #st.write('Ok')
+            st.write('Ok')
+    
+    elements.grupo_azul(f'Média {dicionario_medias['Kg']}Kg')
 
     with col2:
         col001, col002 = st.columns([1.5, 3])
@@ -84,5 +98,5 @@ def metricas_pedidos(olist):
 
     
     
-        
+
     

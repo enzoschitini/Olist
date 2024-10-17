@@ -2,6 +2,7 @@ import streamlit as st
 import pandas as pd
 
 import utils.metrics as mtc
+import utils.elements as elements
 
 # App developer:     Enzo Schitini
 # Date:              2 Outubro 2024
@@ -15,6 +16,15 @@ def metricas_pedidos(olist):
     # Calculando a diferença
     diferenca_dias = (data_fim - data_inicio).days
 
+    def means(olist):
+        dicionario_medias = {}  
+        for col in list(olist.select_dtypes('number').columns):
+            dicionario_medias[col] = round(olist[col].mean(), 2) 
+
+        return dicionario_medias
+    
+    dicionario_medias = means(olist)
+
     st.title(f"Análise dos Pedidos")
 
     col1, col2 = st.columns(2) # [3, 1.5]
@@ -24,7 +34,8 @@ def metricas_pedidos(olist):
         with col001:
             st.image('streamlit_application/img/Commerce Illustrations/vctrly-business-illustrations-3-unboxing.png', width=150)
         with col002:
-            st.write('Ok')
+            elements.grupo_azul(f'Média {dicionario_medias['Kg']}Kg')
+            #st.write('Ok')
 
     with col2:
         col001, col002 = st.columns([1.5, 3])
@@ -33,7 +44,7 @@ def metricas_pedidos(olist):
         with col002:
             st.write('Ok')
     
-    st.write('---')
+    mtc.espaco()
     col01, col02 = st.columns([1, 3])
 
     with col01:
@@ -53,7 +64,23 @@ def metricas_pedidos(olist):
         st.write(f'#### Percentual sem frete: {sem_frete}')
     with col02:
         mtc.boxplot(olist, col_boxplot)
-    
+
+    mtc.espaco()
+    col1, col2 = st.columns(2) # [3, 1.5]
+
+    with col1:
+        col001, col002 = st.columns([1.5, 3])
+        with col001:
+            st.image('streamlit_application/img/Commerce Illustrations/vctrly-business-illustrations-3-unboxing.png', width=150)
+        with col002:
+            st.write('Ok')
+
+    with col2:
+        col001, col002 = st.columns([1.5, 3])
+        with col001:
+            st.image('streamlit_application/img/Commerce Illustrations/vctrly-business-illustrations-3-unboxing.png', width=150)
+        with col002:
+            st.write('Osk')
 
     
     

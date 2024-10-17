@@ -2,6 +2,7 @@ import streamlit as st
 import pandas as pd
 
 import utils.metrics as mtc
+import utils.elements as elements
 
 # streamlit_application developer:     Enzo Schitini
 # Date:              2 Outubro 2024
@@ -28,7 +29,12 @@ def general(olist):
         mtc.markdown(mtc.formatar_numero_grande(sum(list(olist['payment_value']))), ' de faturamento', 
                  f'{mtc.formatar_numero_grande(round(sum(list(olist['payment_value'])) / diferenca_dias))}/Dia', '#F8F8FF')
     
-    mtc.order_id(olist)
+    grafico1, grafico2 = st.columns([3, 2])
     
+    with grafico1:
+        mtc.order_id(olist)
+    with grafico2:        
+        group_by = olist.groupby('month/year_of_purchase', as_index=False)
+        mtc.line_metrics_time(group_by['payment_value'].sum(), 'payment_value', 'Faturamento médio mensal')
 
-        
+

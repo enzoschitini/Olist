@@ -3,6 +3,7 @@ import pandas as pd
 import plotly.graph_objects as go
 import plotly.express as px
 import locale
+import io
 
 import utils.metrics as mtc
 
@@ -113,7 +114,11 @@ def metricas_produtos(olist, opcao):
 
         mtc.markdown_pedidos(f'${mtc.formatar_numero_grande(lucro_total_de_vendas)}', f'em {total_de_vendas} vendas', 
                                 linha_01, linha_02, linha_03, linha_04, '#F8F8FF')
-        
+
+
+
+
+
     # Análise geral ###########################################################################################################
     # -------------------------------------------------------------------------------------------------------------------------
     if opcao == 'Análise geral':
@@ -137,6 +142,52 @@ def metricas_produtos(olist, opcao):
             st.image('streamlit_application/img/Commerce Illustrations/vctrly-business-illustrations-6-onlineshop.png', width=200)
             st.write('### Escolha uma métrica para ordenar as categorias')
 
+            # Função para converter o DataFrame para XLSX
+            def convert_df_to_excel(df):
+                buffer = io.BytesIO()
+                with pd.ExcelWriter(buffer, engine='xlsxwriter') as writer:
+                    df.to_excel(writer, index=False)
+                return buffer
+
+            # CSS para personalizar o botão e remover a borda vermelha
+            st.markdown("""
+                <style>
+                .stDownloadButton button {
+                    background-color: #007bff;
+                    color: white;
+                    transition: background-color 0.3s ease;
+                    border: none;  /* Remove a borda padrão */
+                    outline: none;  /* Remove a borda de foco */
+                }
+                .stDownloadButton button:hover {
+                    background-color: #0056b3;
+                    color: white;
+                }
+                .stDownloadButton button:active {
+                    background-color: #004080;
+                    color: white;
+                }
+                .stDownloadButton button:focus {
+                    outline: none;  /* Remove a borda ao focar */
+                    box-shadow: none;  /* Remove o sombreado ao focar */
+                }
+                </style>
+                """, unsafe_allow_html=True)
+
+            # Botão para download
+            st.write("Tabela com informações sobre as categorias (XLSX)")
+
+            # Gerando o buffer do Excel
+            excel_buffer = convert_df_to_excel(dados_categorias)
+
+            # Botão de download
+            st.download_button(
+                label="Baixar XLSX",
+                data=excel_buffer,
+                file_name='Tabela das Categorias - Olist.xlsx',
+                mime='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
+            )
+
         with col_list:
             ordenar_por = mtc.escolher_opcao('Ordenar por', list(dados_categorias.drop(columns='Categoria').columns))
 
@@ -145,6 +196,10 @@ def metricas_produtos(olist, opcao):
 
             for categoria in categorias:
                 list_products(categoria)
+
+
+
+
 
     # Análise de uma categoria ################################################################################################
     # -------------------------------------------------------------------------------------------------------------------------
@@ -173,10 +228,10 @@ def metricas_produtos(olist, opcao):
         with titolo_01:
              st.image('streamlit_application/img/Commerce Illustrations/vctrly-business-illustrations-200-presentation.png')
              st.title(f'{categoria_nome}')
-             st.write(f'#### Desempenho da categoria {desempenho}')
+             st.write(f'#### Tempo de entrega: {envio}')
         with titolo_02:
              mtc.markdown(f'${mtc.formatar_numero_grande(lucro_total_de_vendas)}', f'em {total_de_vendas} vendas', 
-                        f'Total de vendedores: {quantidade_vendedores} • Tempo de entrega: {envio}', '#F8F8FF')
+                        f'Total de vendedores: {quantidade_vendedores} • Desempenho da categoria {desempenho}', '#F8F8FF')
              
              mtc.markdown(f'{mtc.formatar_numero_grande(valor_medio_venda)}', ' Valor médio da venda', 
                         f'Preço Médio: {preco_medio} • Frete Médio: {valor_medio_frete}({taxa_frete}%) • Total de parcelas: {numero_percelas} • Preço médio(parcela): {preco_por_parcela}', '#F8F8FF')

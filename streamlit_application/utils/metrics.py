@@ -306,3 +306,54 @@ def espaco():
     st.write('')
     st.write('---')
     st.write('')
+
+@st.cache_data
+def partes(olist, coluna):
+    olist['order_purchase_timestamp'] = pd.to_datetime(olist['order_purchase_timestamp'])
+    # Assuming olist DataFrame is already defined and 'order_purchase_timestamp' is in datetime format
+    # Extract year and month
+    olist['year_month'] = olist['order_purchase_timestamp'].dt.to_period('M')
+
+    # Calculate monthly statistics
+    monthly_stats = olist.groupby('year_month')[coluna].agg(['mean', lambda x: x.quantile(0.25), 
+                                                                lambda x: x.quantile(0.5), 
+                                                                lambda x: x.quantile(0.75)]).reset_index()
+    monthly_stats.columns = ['year_month', 'mean', '25%', '50%', '75%']
+
+    # Create the Plotly figure
+    fig = go.Figure()
+
+    # Add traces for mean and percentiles
+    fig.add_trace(go.Scatter(x=monthly_stats['year_month'].astype(str), 
+                            y=monthly_stats['mean'], 
+                            mode='lines+markers', 
+                            name='Média'))
+
+    fig.add_trace(go.Scatter(x=monthly_stats['year_month'].astype(str), 
+                            y=monthly_stats['25%'], 
+                            mode='lines+markers', 
+                            name='25%', 
+                            line=dict(dash='dash')))
+
+    fig.add_trace(go.Scatter(x=monthly_stats['year_month'].astype(str), 
+                            y=monthly_stats['50%'], 
+                            mode='lines+markers', 
+                            name='50%', 
+                            line=dict(dash='dash')))
+
+    fig.add_trace(go.Scatter(x=monthly_stats['year_month'].astype(str), 
+                            y=monthly_stats['75%'], 
+                            mode='lines+markers', 
+                            name='75%', 
+                            line=dict(dash='dash')))
+
+    # Update layout
+    fig.update_layout(title=f'Quartis da coluna {coluna}',
+                    xaxis_title='Meses',
+                    yaxis_title=coluna,
+                    xaxis_tickangle=-45,
+                    legend_title='Estatísticas',
+                    template='plotly_white')
+
+    # Show the figure
+    st.plotly_chart(fig)

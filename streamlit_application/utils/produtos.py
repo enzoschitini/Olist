@@ -115,6 +115,46 @@ def metricas_produtos(olist, opcao):
         mtc.markdown_pedidos(f'${mtc.formatar_numero_grande(lucro_total_de_vendas)}', f'em {total_de_vendas} vendas', 
                                 linha_01, linha_02, linha_03, linha_04, '#F8F8FF')
 
+    # Tradução das colunas ####################################################################################################
+    # -------------------------------------------------------------------------------------------------------------------------
+    colunas_renomeadas = {
+        "order_item_id": "ID do item do pedido",
+        "customer_zip_code_prefix": "Prefixo do CEP do cliente",
+        "product_name_lenght": "Comprimento do nome do produto",
+        "product_description_lenght": "Comprimento da descrição do produto",
+        "product_photos_qty": "Quantidade de fotos do produto",
+        "product_weight_g": "Peso do produto (g)",
+        "product_length_cm": "Comprimento do produto (cm)",
+        "product_height_cm": "Altura do produto (cm)",
+        "product_width_cm": "Largura do produto (cm)",
+        "Kg": "Peso (Kg)",
+        "seller_zip_code_prefix": "Prefixo do CEP do vendedor",
+        "payment_sequential": "Sequência de pagamento",
+        "payment_installments": "Parcelas de pagamento",
+        "installments_price": "Valor das parcelas",
+        "price": "Preço",
+        "freight_value": "Valor do frete",
+        "payment_value": "Valor do pagamento",
+        "review_score": "Pontuação da avaliação",
+        "year_of_purchase": "Ano da compra"
+    }
+
+    # Função para encontrar chave a partir do valor
+    def encontrar_chave(dicionario, valor_procurado):
+        for chave, valor in dicionario.items():
+            if valor == valor_procurado:
+                return chave
+        return None  # Se não encontrar
+
+    colunas_numericas = ['payment_value', 'price', 'freight_value', 'payment_installments', 'installments_price',
+                         'product_name_lenght', 'product_description_lenght', 'product_photos_qty', 'product_weight_g', 
+                         'product_length_cm', 'product_height_cm', 'product_width_cm', 'Kg']
+    colunas_numericas_ptbr = []
+
+    for x in colunas_numericas:
+        col = colunas_renomeadas[x]
+        colunas_numericas_ptbr.append(col)
+
 
 
 
@@ -261,5 +301,15 @@ def metricas_produtos(olist, opcao):
         order_item_id = olist[olist['order_id'].isin(order_item_id_list)]
         order_item_id = order_item_id.loc[order_item_id['product_category_name'] != categoria_escolhida]
 
+        col1, col2 = st.columns([3, 1])
+
+        with col1:
+            st.write(f'## Análise dos quartis:')
+        with col2:
+            col_select = st.selectbox('Selecione uma coluna para o boxplot', colunas_numericas_ptbr)
+            col_select = encontrar_chave(colunas_renomeadas, col_select)
+        mtc.partes(olist[olist['product_category_name'] == categoria_escolhida], col_select)
+
         if order_item_id.shape[0] > 1:
              mtc.grafico_categoria('product_category_name', order_item_id, f'Categorias associadas')
+            

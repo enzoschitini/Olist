@@ -2,14 +2,14 @@ import streamlit as st
 
 import streamlit as st
 
-def grupo_azul(titolo):
+def grupo_azul(titolo): # width: 300px;
     # Define HTML and CSS
     html_code = f"""
         <style>
             .container {{
                 background-color: #4561FF;
                 padding: 30px;
-                width: 300px;
+                
                 text-align: center;
                 font-family: Arial, sans-serif;
                 color: white;

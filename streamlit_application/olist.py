@@ -8,8 +8,8 @@ import utils.produtos as pdt
 import utils.metrics as mtc
 import streamlit_application.utils.about as abt
 
-# App developer:     Enzo Schitini
-# Date:              2 Outubro 2024
+# App Developer:     Enzo Schitini -- Data Science
+# Date:              2 Outubro 2024 -- 22 Outubro 2024
 # https://www.notion.so/enzoschitini/Bozza-113b4721c6fd80f6b86cc94f63687086?pvs=4
 
 # 📅 Compiti
@@ -171,5 +171,4 @@ def senha():
         """,
         unsafe_allow_html=True
     )
-
 

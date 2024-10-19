@@ -7,8 +7,8 @@ import io
 
 import utils.metrics as mtc
 
-# App developer:     Enzo Schitini
-# Date:              2 Outubro 2024
+# App Developer:     Enzo Schitini -- Data Science
+# Date:              2 Outubro 2024 -- 22 Outubro 2024
 
 def metricas_produtos(olist, opcao):
     olist = pd.DataFrame(olist)

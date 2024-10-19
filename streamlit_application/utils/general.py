@@ -4,8 +4,8 @@ import pandas as pd
 import utils.metrics as mtc
 import utils.elements as elements
 
-# streamlit_application developer:     Enzo Schitini
-# Date:              2 Outubro 2024
+# App Developer:     Enzo Schitini -- Data Science
+# Date:              2 Outubro 2024 -- 22 Outubro 2024
 
 @st.cache_data
 def general(olist):

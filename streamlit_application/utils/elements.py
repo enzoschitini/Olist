@@ -1,6 +1,7 @@
 import streamlit as st
 
-import streamlit as st
+# App Developer:     Enzo Schitini -- Data Science
+# Date:              2 Outubro 2024 -- 22 Outubro 2024
 
 def grupo_azul(titolo): # width: 300px;
     # Define HTML and CSS
@@ -8,9 +9,10 @@ def grupo_azul(titolo): # width: 300px;
         <style>
             .container {{
                 background-color: #4561FF;
-                padding: 30px;
+                padding: 20px;
                 
                 text-align: center;
+                border: 10px solid #93C5FD;
                 font-family: Arial, sans-serif;
                 color: white;
                 border-radius: 8px;
@@ -179,3 +181,17 @@ def out():
 
                     """
         st.components.v1.html(html_code2)
+
+
+
+        # Circolo
+
+        # HTML e CSS per creare l'elemento circolare allineato a sinistra con distanza tra il cerchio e il testo sotto
+        st.markdown(
+            f"""
+            <div style="display: flex; flex-direction: column; align-items: flex-start;">
+                <div style="width: 150px; height: 150px; background-color: #2563EB; border-radius: 50%; border: 10px solid #93C5FD;">
+                    <p style="font-size: 30px; color: white; text-align: center; line-height: 130px; margin: 0;">dd</p>
+            """,
+            unsafe_allow_html=True
+        )

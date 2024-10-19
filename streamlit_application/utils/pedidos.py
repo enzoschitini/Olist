@@ -1,13 +1,14 @@
 import streamlit as st
 import pandas as pd
+import plotly.graph_objects as go
 import matplotlib.pyplot as plt
 
 import utils.metrics as mtc
 import utils.elements as elements
 import utils.AnalyticsSetup as ast
 
-# App developer:     Enzo Schitini
-# Date:              2 Outubro 2024
+# App Developer:     Enzo Schitini -- Data Science
+# Date:              2 Outubro 2024 -- 22 Outubro 2024
 
 #@st.cache_data
 def metricas_pedidos(olist):
@@ -41,7 +42,9 @@ def metricas_pedidos(olist):
                 return chave
         return None  # Se não encontrar
 
-    colunas_numericas = list(olist.select_dtypes('number'))
+    colunas_numericas = ['payment_value', 'price', 'freight_value', 'payment_installments', 'installments_price',
+                         'product_name_lenght', 'product_description_lenght', 'product_photos_qty', 'product_weight_g', 
+                         'product_length_cm', 'product_height_cm', 'product_width_cm', 'Kg']
     colunas_numericas_ptbr = []
 
     for x in colunas_numericas:
@@ -65,8 +68,6 @@ def metricas_pedidos(olist):
     
     dicionario_medias = means(olist)
 
-    st.title(f"Análise dos Pedidos")
-
     # price freight_value payment_type customer_zone
 
     # Função para análise bivariada de variáveis numéricas AB2N
@@ -82,71 +83,123 @@ def metricas_pedidos(olist):
     col1, col2, col3 = st.columns(3) # [3, 1.5]
 
     with col1:
-        # Variabile per il valore nel cerchio
-        valor = f'${dicionario_medias['price']}'
+        #st.image('streamlit_application/img/Commerce Illustrations/vctrly-business-illustrations-3-unboxing.png', width=150)
+        st.title(f"Análise dos Pedidos")
+        elements.grupo_azul(f'Média {dicionario_medias['price']} Preço')
+        
 
-        # HTML e CSS per creare l'elemento circolare allineato a sinistra con distanza tra il cerchio e il testo sotto
-        st.markdown(
-            f"""
-            <div style="display: flex; flex-direction: column; align-items: flex-start;">
-                <div style="width: 150px; height: 150px; background-color: #2563EB; border-radius: 50%; border: 10px solid #93C5FD;">
-                    <p style="font-size: 30px; color: white; text-align: center; line-height: 130px; margin: 0;">{valor}</p>
-                </div>
-                <div class="custom-box" style="text-align: center; width: 150px; margin-top: 30px;">
-                    <h5 style="color: #333;">Preço médio</h5>
-                </div>
-            </div>
-            """,
-            unsafe_allow_html=True
-        )
-
+        mtc.markdown('h', 'j', 'k', '#F8F8FF')
+        mtc.markdown('h', 'j', 'k', '#F8F8FF')
 
     with col2:
-        mtc.grafico_pizza_rank(olist, 'payment_value', "Categorias de Produtos que mais geram lucro", 'sum')
-    
+        st.write('## Gráfico de Dispersão com Plotly')
+        #Gráfico de Pizza
+        fig = go.Figure(data = go.Pie(labels = ['Sul','Sudeste','Centro-Oeste','Nordeste', "Norte"],
+                                    values = [29933315, 84847187, 16287809, 54644582, 17349619],
+                                    marker_colors = ["khaki", "MediumSeaGreen", "crimson", "limegreen", "tomato"],
+                                    hole = 0.5,
+                                    pull = [0, 0, 0.15, 0, 0]))
+
+        #Rótulos
+        fig.update_traces(textposition = "outside", textinfo = "percent+label")
+
+        #Legenda
+        fig.update_layout(title='Texto com o títolo', legend_title_text = "Regiões brasileiras",
+                        legend = (dict(orientation = "h",
+                                    xanchor = "auto",
+                                    x = 0.5)))
+
+        #Texto
+        fig.update_layout(annotations = [dict(text = "População",
+                                            x = 0.5,
+                                            y = 0.5,
+                                            font_size = 18,
+                                            showarrow = False)])
+        
+        st.plotly_chart(fig)
+
     with col3:
-        elements.grupo_azul(f'Média {dicionario_medias['Kg']}Kg')
+        def card():
+            # Custom HTML and CSS
+            html_code = """
+                <div style="display: flex; align-items: center; background-color: #F0F7FC; padding: 10px; border-radius: 10px; border: 1px solid #E0E0E0; box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);">
+                    <div style="border-radius: 5px; padding: 10px; margin-right: 10px;">
+                        <img src="https://raw.githubusercontent.com/enzoschitini/Olist/refs/heads/main/streamlit_application/img/Commerce%20Illustrations/order.png" width="100px" />
+                    </div>
+                    <div>
+                        <h3 style="margin: 0; color: #2E8E59;">Enter your OpenAI API Key?</h3>
+                        <p style="margin: 0; color: #808080;">Enter your OpenAI API Key?Enter your OpenAI API Key?Enter your OpenAI API Key?</p>
+                    </div>
+                </div>
+                <style>
+                    h3 {
+                        font-family: Arial, sans-serif;
+                        font-size: 18px;
+                    }
+                    p {
+                        font-family: Arial, sans-serif;
+                        font-size: 14px;
+                    }
+                </style>
+            """
+
+            # Display the custom HTML in Streamlit
+            st.markdown(html_code, unsafe_allow_html=True)
+        
+        import plotly.express as px
+
+        # Interface do usuário para selecionar as variáveis
+        st.write('## Gráfico de Dispersão com Plotly')
+
+        # Criar o gráfico de dispersão
+        fig = px.scatter(olist, x='price', y='freight_value', color='payment_type', title='Gráfico de Dispersão')
+
+        # Exibir o gráfico na aplicação Streamlit
+        st.plotly_chart(fig)
     
     mtc.espaco()
     col01, col02 = st.columns([1, 3])
 
     with col01:
-        st.write('### Boxplot')
-        st.image('streamlit_application/img/Commerce Illustrations/vctrly-business-illustrations-200-presentation.png')
+        #st.write('### Boxplot')
 
-        col_plot = st.selectbox('Selecione uma coluna para o boxplot', colunas_numericas_ptbr)
-        col_plot = encontrar_chave(colunas_renomeadas, col_plot)
-        st.write(f'## Média: {round(olist[col_plot].mean(), 2)}')
+        select = st.selectbox('Selecione uma coluna', colunas_numericas_ptbr)
+        col_plot = encontrar_chave(colunas_renomeadas, select)
 
-        com_frete = olist[olist['freight_value'] > 0.0].shape[0]
-        sem_frete = olist[olist['freight_value'] == 0.0].shape[0]
+        st.image('streamlit_application/img/Commerce Illustrations/vctrly-business-illustrations-9.png')
+        #st.write(f'## Média: {round(olist[col_plot].mean(), 2)}')
 
-        com_frete = round((com_frete / olist.shape[0]) * 100, 2)
-        sem_frete = round((sem_frete / olist.shape[0]) * 100, 2)
+        mtc.markdown(f'Média: {round(olist[col_plot].mean(), 2)}', f'{select}', 'd', '#F8F8FF')
 
-        st.write(f'#### Percentual com frete: {com_frete}')
-        st.write(f'#### Percentual sem frete: {sem_frete}')
     with col02:
         mtc.boxplot(olist, col_plot)
     
     mtc.partes(olist, col_plot)
 
     mtc.espaco()
-    col1, col2 = st.columns(2) # [3, 1.5]
+    st.write('## Envio dos pedidos')
+    
+    col1, col2 = st.columns([2, 3]) # [3, 1.5]
 
     with col1:
-        col001, col002 = st.columns([1.5, 3])
+        col001, col002 = st.columns([1.5, 2])
         with col001:
-            st.image('streamlit_application/img/Commerce Illustrations/vctrly-business-illustrations-3-unboxing.png', width=150)
+            st.image('streamlit_application/img/Commerce Illustrations/Order.png', width=150)
         with col002:
             st.write('Ok')
 
     with col2:
-        col001, col002 = st.columns([1.5, 3])
+        col001, col002 = st.columns(2)
         with col001:
-            st.image('streamlit_application/img/Commerce Illustrations/vctrly-business-illustrations-3-unboxing.png', width=150)
+            card()
+            st.write('')
+            card()
+            st.write('')
+            card()
+            st.write('')
+            card()
         with col002:
-            st.write('Osk')
+            pass
 
 
 

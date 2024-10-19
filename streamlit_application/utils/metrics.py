@@ -6,8 +6,8 @@ import plotly.graph_objects as go
 import seaborn as sns
 import locale
 
-# App developer:     Enzo Schitini
-# Date:              2 Outubro 2024
+# App Developer:     Enzo Schitini -- Data Science
+# Date:              2 Outubro 2024 -- 22 Outubro 2024
 
 @st.cache_data
 def formatar_numero_grande(numero):

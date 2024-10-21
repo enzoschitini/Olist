@@ -148,7 +148,7 @@ def boxplot(olist, col):
     df_filtered = olist[(olist[col] >= lower_bound) & (olist[col] <= upper_bound)]
 
     # Configura il grafico
-    plt.figure(figsize=(12, 6))
+    plt.figure(figsize=(12, 12))
 
     # Crea boxplot per le colonne numeriche senza outliers
     sns.boxplot(data=df_filtered[[col]])

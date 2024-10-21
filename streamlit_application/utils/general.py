@@ -15,6 +15,9 @@ def general(olist):
 
     # Calculando a diferença
     diferenca_dias = (data_fim - data_inicio).days
+    capitais_vendedores = olist['seller_city'].nunique()
+    capitais_clientes = olist['customer_city'].nunique()
+    st.write(f'{capitais_vendedores} {capitais_clientes}')
 
     col1, col2, col3 = st.columns(3)
     # <p>Este é um exemplo de um grupo com borda personalizada no Streamlit.</p>
@@ -26,8 +29,8 @@ def general(olist):
         mtc.markdown(mtc.formatar_numero_grande(sum(list(olist['payment_value']))), ' de faturamento', 
                  f'{mtc.formatar_numero_grande(round(sum(list(olist['payment_value'])) / diferenca_dias))}/Dia', '#F8F8FF')
     with col3:
-        mtc.markdown(mtc.formatar_numero_grande(sum(list(olist['payment_value']))), ' de faturamento', 
-                 f'{mtc.formatar_numero_grande(round(sum(list(olist['payment_value'])) / diferenca_dias))}/Dia', '#F8F8FF')
+        mtc.markdown(mtc.formatar_numero_grande(capitais_clientes), ' de cidades compradoras', 
+                 f'{mtc.formatar_numero_grande(capitais_vendedores)} cidades com pontos de venda', '#F8F8FF')
     
     grafico1, grafico2 = st.columns([3, 2])
     

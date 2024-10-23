@@ -216,9 +216,43 @@ def metricas_pedidos(olist):
 
 
 
-
+    # order_purchase_timestamp: Data e ora dell'acquisto
+    # order_approved_at: Data e ora dell'approvazione dell'ordine.
+    # order_delivered_carrier_date: Data di consegna al corriere.
+    # order_delivered_customer_date: Data di consegna al cliente.
+    # order_estimated_delivery_date: Data stimata di consegna.
+    # shipping_limit_date: Data limite per la spedizione.
+    # shipping_duration: Durata della spedizione (tempo effettivo di consegna).
+    
+    olist['order_purchase_timestamp'] = pd.to_datetime(olist['order_purchase_timestamp'])
+    olist['order_approved_at'] = pd.to_datetime(olist['order_approved_at'])
+    olist['order_delivered_carrier_date'] = pd.to_datetime(olist['order_delivered_carrier_date'])
+    olist['order_delivered_customer_date'] = pd.to_datetime(olist['order_delivered_customer_date'])
+    olist['order_estimated_delivery_date'] = pd.to_datetime(olist['order_estimated_delivery_date'])
+    olist['shipping_limit_date'] = pd.to_datetime(olist['shipping_limit_date'])
     olist['shipping_duration'] = pd.to_timedelta(olist['shipping_duration'])
     olist['shipping_duration_days'] = olist['shipping_duration'].dt.days
+
+    olist['duracao_aprovacao'] = olist['order_approved_at'] - olist['order_purchase_timestamp']
+    olist['duracao_envio_ate_correio'] = olist['order_delivered_carrier_date'] - olist['order_approved_at']
+    olist['duracao_envio_ate_cliente'] = olist['order_delivered_customer_date'] - olist['order_delivered_carrier_date']
+    olist['chegada_limite'] = (olist['shipping_limit_date'] - olist['order_delivered_customer_date']).dt.days
+    olist['chegada_estimativa'] = (olist['order_estimated_delivery_date'] - olist['order_delivered_customer_date']).dt.days
+
+    st.write(olist[['order_purchase_timestamp', 'order_approved_at', 'duracao_aprovacao', 
+                    'duracao_envio_ate_correio', 'duracao_envio_ate_cliente', 'shipping_duration',
+                    'chegada_limite', 'chegada_estimativa']])
+    
+    percentual_atraso = round(olist[olist['chegada_estimativa'] < 0].shape[0] / olist[olist['chegada_estimativa'] >= 0].shape[0] * 100)
+    media_atraso = abs(round(olist[olist['chegada_estimativa'] < 0]['chegada_estimativa'].mean(), 2))
+    media_chegou_antes = abs(round(olist[olist['chegada_estimativa'] >= 0]['chegada_estimativa'].mean(), 2))
+
+    st.write(f'## Envio dos pedidos ')
+    mtc.markdown('Duração média de 13 dias', f'{percentual_atraso}%', f'{media_atraso} - {media_chegou_antes}', '4561FF')
+
+
+
+    st.write('---')
 
     st.write(f'## Envio dos pedidos ') # - Duração média de {dicionario_medias['shipping_duration_days']} dias
     

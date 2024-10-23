@@ -17,7 +17,6 @@ def general(olist):
     diferenca_dias = (data_fim - data_inicio).days
     capitais_vendedores = olist['seller_city'].nunique()
     capitais_clientes = olist['customer_city'].nunique()
-    st.write(f'{capitais_vendedores} {capitais_clientes}')
 
     col1, col2, col3 = st.columns(3)
     # <p>Este é um exemplo de um grupo com borda personalizada no Streamlit.</p>

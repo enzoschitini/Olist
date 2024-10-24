@@ -239,53 +239,66 @@ def metricas_pedidos(olist):
     olist['chegada_limite'] = (olist['shipping_limit_date'] - olist['order_delivered_customer_date']).dt.days
     olist['chegada_estimativa'] = (olist['order_estimated_delivery_date'] - olist['order_delivered_customer_date']).dt.days
 
-    st.write(olist[['order_purchase_timestamp', 'order_approved_at', 'duracao_aprovacao', 
-                    'duracao_envio_ate_correio', 'duracao_envio_ate_cliente', 'shipping_duration',
-                    'chegada_limite', 'chegada_estimativa']])
-    
+    @st.cache_data
+    def line_metrics_time(sales_data, categoria, title):
+        sales_data.rename(columns={'month/year_of_purchase': 'year_month'}, inplace=True)
+        sales_data['year_month'] = pd.to_datetime(sales_data['year_month'], format='mixed', errors='coerce')
+
+        if sales_data['year_month'].isna().sum() > 0:
+            st.write("Warning: Some dates couldn't be parsed and have been set to NaT.")
+
+        sales_data = sales_data.sort_values('year_month')
+        fig = px.line(sales_data, x='year_month', y=categoria, title=title,labels={'year_month': 'Mês/Ano', categoria: f'Valor {categoria}'},markers=True,template='ygridoff') 
+
+        fig.add_shape(type='line', x0=sales_data['year_month'].min(), y0=0, x1=sales_data['year_month'].max(), y1=0, line=dict(color='red', dash='dash'), name='Linea zero')
+        fig.update_yaxes(tickprefix="")
+        fig.update_layout(xaxis=dict(showgrid=True), yaxis=dict(showgrid=True))
+        st.plotly_chart(fig)
+
     percentual_atraso = round(olist[olist['chegada_estimativa'] < 0].shape[0] / olist[olist['chegada_estimativa'] >= 0].shape[0] * 100)
     media_atraso = abs(round(olist[olist['chegada_estimativa'] < 0]['chegada_estimativa'].mean(), 2))
     media_chegou_antes = abs(round(olist[olist['chegada_estimativa'] >= 0]['chegada_estimativa'].mean(), 2))
 
-    st.write(f'## Envio dos pedidos ')
-    mtc.markdown('Duração média de 13 dias', f'{percentual_atraso}%', f'{media_atraso} - {media_chegou_antes}', '4561FF')
-
-
-
-    st.write('---')
-
-    st.write(f'## Envio dos pedidos ') # - Duração média de {dicionario_medias['shipping_duration_days']} dias
-    
-    col1, col2 = st.columns([2, 3]) # [3, 1.5]
+    col1, col2 = st.columns([1.5, 3])
 
     with col1:
-        col001, col002 = st.columns([1.5, 2])
-        with col001:
-            st.image('streamlit_application/img/Commerce Illustrations/Order.png', width=150)
-        with col002:
-            st.write('Ok')
-        
-        
+        st.image('streamlit_application/img/Commerce Illustrations/Order.png', width=150)
+        st.write(f'## Envio dos pedidos ')
+        mtc.markdown('Duração média de 13 dias', f'{percentual_atraso}%', f'{media_atraso} - {media_chegou_antes}', '4561FF')
+    with col2:
         group_by = olist.groupby('month/year_of_purchase', as_index=False)
         mtc.line_metrics_time(group_by['shipping_duration_days'].mean(), 'shipping_duration_days', 'Duração das entregas em dias')
 
+    col1, col2, col3 = st.columns(3)
+    def convert(tempo):
+        # Convert to total seconds, minutes, or hours
+        mean_seconds = tempo.total_seconds()
+        mean_minutes = mean_seconds / 60
+        mean_hours = mean_minutes / 60
+        mean_days = mean_hours / 24
+
+        return mean_seconds, mean_minutes, mean_hours, mean_days
+
+    with col1:
+        st.write('### FFF')
+        st.image('streamlit_application/img/icons/office-stamp-document-13.png', width=150)
+        st.write(f'{round(convert(olist['duracao_aprovacao'].mean())[2])} Horas')
+
     with col2:
-        col001, col002 = st.columns(2)
-        with col001:
-            card()
-            st.write('')
-            card()
-            st.write('')
-            card()
-            st.write('')
-            card()
-        with col002:
-            pass
+        st.write('### FFF')
+        st.image('streamlit_application/img/icons/worldwide-web-location-pin-25.png', width=150)
+        st.write(f'{round(convert(olist['duracao_envio_ate_correio'].mean())[3])} Dias')
 
+    with col3:
+        st.write('### FFF')
+        st.image('streamlit_application/img/icons/business-coaching-strategy-1-36.png', width=150)
+        st.write(f'{round(convert(olist['duracao_envio_ate_cliente'].mean())[3])} Dias')
 
+    col1, col2 = st.columns(2)
+    group_by = olist.groupby('month/year_of_purchase', as_index=False)
 
-
-    
-    
-
-    
+    with col1:
+        line_metrics_time(group_by['chegada_estimativa'].mean(), 'chegada_estimativa', 'Preço do frete')
+    with col2:
+        line_metrics_time(group_by['chegada_limite'].mean(), 'chegada_limite', 'Preço do frete')
+  

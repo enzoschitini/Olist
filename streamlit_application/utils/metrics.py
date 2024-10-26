@@ -348,7 +348,7 @@ def partes(olist, coluna):
                             line=dict(dash='dash')))
 
     # Update layout
-    fig.update_layout(title=f'Quartis da coluna {coluna}',
+    fig.update_layout(title=f'Quartis:',
                     xaxis_title='Meses',
                     yaxis_title=coluna,
                     xaxis_tickangle=-45,

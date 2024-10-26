@@ -59,11 +59,21 @@ def metricas_pedidos(olist):
 
     # Calculando a diferença
     diferenca_dias = (data_fim - data_inicio).days
-    
+    import numpy as np
+
     def means(olist):
         dicionario_medias = {}  
         for col in list(olist.select_dtypes('number').columns):
-            dicionario_medias[col] = round(olist[col].mean(), 2) 
+            if col != 'installments_price':
+                dicionario_medias[col] = round(olist[col].mean(), 2) 
+            if col == 'installments_price':
+                df = olist
+                # Replace infinite values with NaN, then drop NaN or 0 values if needed
+                df['installments_price'].replace([np.inf, -np.inf], np.nan, inplace=True)
+                df = df[df['installments_price'] != 0]  # Optionally remove rows with 0 values
+
+                # Calculate the mean, ignoring NaN values
+                dicionario_medias[col] = round(df['installments_price'].mean(), 2)
 
         return dicionario_medias
     
@@ -102,7 +112,7 @@ def metricas_pedidos(olist):
         mtc.markdown(f'{dicionario_medias['payment_installments']}', ' - Número médio de parcelas', f'Valor médio por parcela: {dicionario_medias['installments_price']}', '#F8F8FF')
 
     with col2:
-        st.write('## Gráfico de Dispersão com Plotly')
+        st.write('## Partes do valor total')
         #Gráfico de Pizza
         fig = go.Figure(data = go.Pie(labels = ['Preço do produto', 'Preço do frete'],
                                     values = [dicionario_medias['price'], dicionario_medias['freight_value']],
@@ -114,7 +124,7 @@ def metricas_pedidos(olist):
         fig.update_traces(textposition = "outside", textinfo = "percent+label")
 
         #Legenda
-        fig.update_layout(title='Partes do valor total', legend_title_text = "Partes:",
+        fig.update_layout(title='Gráfico de pizza', legend_title_text = "Partes:",
                         legend = (dict(orientation = "h",
                                     xanchor = "auto",
                                     x = 0.5)))
@@ -132,7 +142,7 @@ def metricas_pedidos(olist):
         import plotly.express as px
 
         # Interface do usuário para selecionar as variáveis
-        st.write('## Gráfico de Dispersão com Plotly')
+        st.write('## Forma de pagamento')
 
         # Criar o gráfico de dispersão
         fig = px.scatter(olist, x='price', y='freight_value', color='payment_type', title='Gráfico de Dispersão')
@@ -264,11 +274,11 @@ def metricas_pedidos(olist):
     with col1:
         st.image('streamlit_application/img/Commerce Illustrations/Order.png', width=150)
         st.write(f'## Envio dos pedidos ')
-        mtc.markdown('Duração média de 13 dias', f'{percentual_atraso}%', f'{media_atraso} - {media_chegou_antes}', '4561FF')
+        mtc.markdown('Duração média de 13 dias', '', f'Cerca de {percentual_atraso}% dos pedidos chegam atrasados', '4561FF')
     with col2:
         group_by = olist.groupby('month/year_of_purchase', as_index=False)
         mtc.line_metrics_time(group_by['shipping_duration_days'].mean(), 'shipping_duration_days', 'Duração das entregas em dias')
-
+    
     col1, col2, col3 = st.columns(3)
     def convert(tempo):
         # Convert to total seconds, minutes, or hours
@@ -280,25 +290,22 @@ def metricas_pedidos(olist):
         return mean_seconds, mean_minutes, mean_hours, mean_days
 
     with col1:
-        st.write('### FFF')
         st.image('streamlit_application/img/icons/office-stamp-document-13.png', width=150)
-        st.write(f'{round(convert(olist['duracao_aprovacao'].mean())[2])} Horas')
+        mtc.markdown('Aprovação da compra:', f'{round(convert(olist['duracao_aprovacao'].mean())[2])} Horas', f'Tempo médio desde o momento da compra até a aprovação da compra', '4561FF')
 
     with col2:
-        st.write('### FFF')
         st.image('streamlit_application/img/icons/worldwide-web-location-pin-25.png', width=150)
-        st.write(f'{round(convert(olist['duracao_envio_ate_correio'].mean())[3])} Dias')
+        mtc.markdown('Envio até o correio:', f'{round(convert(olist['duracao_envio_ate_correio'].mean())[3])} Dias', f'Duração média desde a aprovação da compra até a chegada ao correio', '4561FF')
 
     with col3:
-        st.write('### FFF')
         st.image('streamlit_application/img/icons/business-coaching-strategy-1-36.png', width=150)
-        st.write(f'{round(convert(olist['duracao_envio_ate_cliente'].mean())[3])} Dias')
+        mtc.markdown('Envio até o cliente:', f'{round(convert(olist['duracao_envio_ate_cliente'].mean())[3])} Dias', f'Duração média desde o correio até serem enviados aos clientes ', '4561FF')
 
     col1, col2 = st.columns(2)
     group_by = olist.groupby('month/year_of_purchase', as_index=False)
 
     with col1:
-        line_metrics_time(group_by['chegada_estimativa'].mean(), 'chegada_estimativa', 'Preço do frete')
+        line_metrics_time(group_by['chegada_estimativa'].mean(), 'chegada_estimativa', 'Estimativa de chagada')
     with col2:
-        line_metrics_time(group_by['chegada_limite'].mean(), 'chegada_limite', 'Preço do frete')
+        line_metrics_time(group_by['chegada_limite'].mean(), 'chegada_limite', 'Data limite de chagada')
   

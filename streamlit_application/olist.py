@@ -171,4 +171,3 @@ def senha():
         """,
         unsafe_allow_html=True
     )
-

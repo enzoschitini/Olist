@@ -95,6 +95,16 @@ def markdown_pedidos(text_01, text02, text_03, text_04, text_05, text_06, color)
         </div>
         """, unsafe_allow_html=True)
 
+def multiselect(options, Selecione):
+    # Widget per selezionare le colonne
+    colonne_selezionate = st.multiselect(
+        Selecione,
+        options=options,
+        default=options[:2] 
+    )
+
+    return colonne_selezionate
+
 @st.cache_data
 def grafico(olist):
     # Converter coluna de data para o formato datetime

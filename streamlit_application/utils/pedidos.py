@@ -2,6 +2,7 @@ import streamlit as st
 import pandas as pd
 import plotly.graph_objects as go
 import matplotlib.pyplot as plt
+import numpy as np
 
 import utils.metrics as mtc
 import utils.elements as elements
@@ -10,7 +11,6 @@ import utils.AnalyticsSetup as ast
 # App Developer:     Enzo Schitini -- Data Science
 # Date:              2 Outubro 2024 -- 22 Outubro 2024
 
-#@st.cache_data
 def metricas_pedidos(olist):
 
     colunas_renomeadas = {
@@ -59,7 +59,6 @@ def metricas_pedidos(olist):
 
     # Calculando a diferença
     diferenca_dias = (data_fim - data_inicio).days
-    import numpy as np
 
     def means(olist):
         dicionario_medias = {}  
@@ -78,27 +77,6 @@ def metricas_pedidos(olist):
         return dicionario_medias
     
     dicionario_medias = means(olist)
-
-    # price freight_value payment_type customer_zone
-
-    # Função para análise bivariada de variáveis numéricas AB2N
-    # Função para análise bivariada entre variável categórica e numérica num_cat_analysis
-    # Função para análise bivariada entre variável categórica e numérica usando um gráfico de barras num_cat_analysis_bar
-    # Função para análise bivariada entre variáveis categóricas AB2C
-
-    #ast.AB2N(olist, 'price', 'freight_value')
-    #ast.num_cat_analysis_bar(olist, 'price', 'payment_type')
-    #ast.AB2C(olist, 'payment_type', 'customer_zone', 'qtd') 
-    #ast.AB2C(olist, 'payment_type', 'customer_zone', 'prct') 
-
-
-
-
-
-
-
-
-
 
     col1, col2, col3 = st.columns(3) # [3, 1.5]
 
@@ -152,41 +130,7 @@ def metricas_pedidos(olist):
     
     mtc.espaco()
 
-
-
-
-
-
-
-
-
-
     col01, col02 = st.columns([1, 4])
-
-    def card():
-        # Custom HTML and CSS
-        html_code = """
-            <div style="display: flex; align-items: center; background-color: #F0F7FC; padding: 20px; border-radius: 10px; border: 1px solid #E0E0E0; box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);">
-                <div>
-                    <h3 style="margin: 0; color: #4561FF;">Enter your OpenAI API Key?</h3>
-                    <p style="margin: 0; color: #808080;">Enter your OpenAI API Key?Enter your OpenAI API Key?Enter your OpenAI API Key?</p>
-                </div>
-            </div>
-            <style>
-                h3 {
-                    font-family: Arial, sans-serif;
-                    font-size: 18px;
-                }
-                p {
-                    font-family: Arial, sans-serif;
-                    font-size: 14px;
-                }
-            </style>
-        """
-
-        # Display the custom HTML in Streamlit
-        st.markdown(html_code, unsafe_allow_html=True)
-
     with col01:
         #st.write('### Boxplot')
 
@@ -217,22 +161,6 @@ def metricas_pedidos(olist):
     mtc.partes(olist, col_plot)
 
     mtc.espaco()
-
-
-
-
-
-
-
-
-
-    # order_purchase_timestamp: Data e ora dell'acquisto
-    # order_approved_at: Data e ora dell'approvazione dell'ordine.
-    # order_delivered_carrier_date: Data di consegna al corriere.
-    # order_delivered_customer_date: Data di consegna al cliente.
-    # order_estimated_delivery_date: Data stimata di consegna.
-    # shipping_limit_date: Data limite per la spedizione.
-    # shipping_duration: Durata della spedizione (tempo effettivo di consegna).
     
     olist['order_purchase_timestamp'] = pd.to_datetime(olist['order_purchase_timestamp'])
     olist['order_approved_at'] = pd.to_datetime(olist['order_approved_at'])
@@ -274,7 +202,7 @@ def metricas_pedidos(olist):
     with col1:
         st.image('streamlit_application/img/Commerce Illustrations/Order.png', width=150)
         st.write(f'## Envio dos pedidos ')
-        mtc.markdown('Duração média de 13 dias', '', f'Cerca de {percentual_atraso}% dos pedidos chegam atrasados', '4561FF')
+        mtc.markdown('Duração média de 13 dias', '', f'{percentual_atraso}% dos pedidos chegam atrasados (atraso médio de {media_atraso} dias)', '4561FF')
     with col2:
         group_by = olist.groupby('month/year_of_purchase', as_index=False)
         mtc.line_metrics_time(group_by['shipping_duration_days'].mean(), 'shipping_duration_days', 'Duração das entregas em dias')

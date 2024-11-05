@@ -6,6 +6,8 @@ import utils.general as all
 import utils.pedidos as pds
 import utils.produtos as pdt
 import utils.metrics as mtc
+import utils.geodata as geo
+import utils.dataset as dts
 import streamlit_application.utils.about as abt
 
 # App Developer:     Enzo Schitini -- Data Science
@@ -103,12 +105,24 @@ def init():
 
 
     if selected == "Produtos":
-        password = "1234"
         try:
             opcao = mtc.escolher_opcao_sidbar('Escolha como quer ver as categorias', ['Análise de uma categoria', 'Análise geral'])
             pdt.metricas_produtos(olist, opcao)
         except Exception as error:
             try_except('metricas_produtos', 'produtos', error)
+    
+    if selected == "Mapa":
+        try:
+            opcao = mtc.escolher_opcao_sidbar('Escolha como quer ver as categorias', ['Geral', 'Pontos de venda', 'Comparar regiões'])
+            geo.maps(olist, opcao)
+        except Exception as error:
+            try_except('maps', 'geo', error)
+    
+    if selected == "Data Base":
+        try:
+            dts.data_filter(olist)
+        except Exception as error:
+            try_except('data_filter', 'dst', error)
         
 
 

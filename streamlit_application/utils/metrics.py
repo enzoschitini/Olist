@@ -367,3 +367,51 @@ def partes(olist, coluna):
 
     # Show the figure
     st.plotly_chart(fig)
+
+@st.cache_data
+def ordem(sales_data, dic):
+    # Rename the column 'month/year_of_purchase' to 'year_month' if needed
+    sales_data.rename(columns={'month/year_of_purchase': 'year_month'}, inplace=True)
+
+    # Convert 'year_month' to datetime format, allowing pandas to infer the format  
+    sales_data['year_month'] = pd.to_datetime(sales_data['year_month'], format='mixed', errors='coerce')
+
+    # Sort the data by 'year_month'
+    sales_data = sales_data.sort_values('year_month')
+    sales_data['month/year_of_purchase'] = sales_data['month_of_purchase'].astype(str) + '-' + sales_data['year_of_purchase'].astype(str)
+
+    sales_data = list(sales_data['month/year_of_purchase'].unique())
+
+    dic_ordinato = {key: dic.get(key, 0) for key in sales_data}
+
+    return sales_data, dic_ordinato
+
+@st.cache_data
+def novos(dataframe, col:str, grafico:bool):
+    ids_vistos = set()
+    dic_qtd_ano = {}
+    yers = dataframe['month/year_of_purchase'].unique()
+
+    for x in yers:
+        ids = set(dataframe[dataframe['month/year_of_purchase'] == x][col].unique().tolist())
+        difference = len(ids - ids_vistos)
+        
+        dic_qtd_ano[x] = difference
+        ids_vistos.update(ids)
+    
+    dic_qtd_ano = list(ordem(dataframe.copy(), dic_qtd_ano))[1]
+
+    if grafico == 0:
+        return dic_qtd_ano
+    elif grafico == 1:
+        # Create the bar plot
+        fig = px.bar(
+            x=dic_qtd_ano.keys(), 
+            y=dic_qtd_ano.values(), 
+            title='Análise da entrada de novos registros',
+            labels={'x': 'Mês/Ano', 'y': 'Quantidade'}, 
+            template='ygridoff'
+        )
+
+        fig.update_layout(xaxis=dict(showgrid=True), yaxis=dict(showgrid=True))
+        st.plotly_chart(fig)

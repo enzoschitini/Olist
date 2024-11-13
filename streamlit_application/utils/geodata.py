@@ -5,7 +5,7 @@ import plotly.graph_objects as go
 
 import utils.metrics as mtc
 
-def maps(olist, opcao):
+def maps(olist):
 
     colunas_renomeadas = {
         "order_item_id": "ID do item do pedido",
@@ -27,8 +27,18 @@ def maps(olist, opcao):
         "payment_value": "Valor do pagamento",
         "review_score": "Pontuação da avaliação",
         "year_of_purchase": "Ano da compra",
-        "shipping_duration_days": "Duração de envio (dias)"
+        "duracao_envio_ate_cliente": "Duração de envio (dias)"
     }
+
+    def inverte_o_dicionario(busca:str):
+        # Inverte o dicionário: valores tornam-se chaves e chaves tornam-se valores
+        valor_para_chave = {valor: chave for chave, valor in colunas_renomeadas.items()}
+        
+        # Busca a chave correspondente ao valor "busca"
+        chave_encontrada = valor_para_chave.get(busca)
+
+        return chave_encontrada
+
 
     geo = pd.read_csv('streamlit_application/data/olist_geolocation_dataset.csv')
 
@@ -43,6 +53,7 @@ def maps(olist, opcao):
     geolocation_zip_code_prefix = geo['geolocation_zip_code_prefix'].to_list()
     #st.write(geo) # geolocation_zip_code_prefix
 
+    @st.cache_data
     def grafico_radar():
         # Definisci i dati
         categorie = ['A', 'B', 'C', 'D', 'E']
@@ -100,16 +111,17 @@ def maps(olist, opcao):
 
         # Personalizzazione del layout
         fig.update_layout(
-            title='Vendite Mensili con Etichette',
-            xaxis_title='Mese',
-            yaxis_title='Numero di Vendite',
+            #title='Vendite Mensili con Etichette',
+            xaxis_title='Território',
+            yaxis_title='Volúme',
             template='ygridoff'  # Tema del grafico (opzionale)
         )
 
         # Mostra il grafico in Streamlit
         st.plotly_chart(fig)
-
-    def grafico_linea(meses, listas, territorios):
+    
+    @st.cache_data
+    def grafico_linea(meses, listas, territorios, title):
         # Creazione del grafico di linea
         fig = go.Figure()
 
@@ -133,20 +145,20 @@ def maps(olist, opcao):
 
         # Personalizzazione del layout
         fig.update_layout(
-            title='Confronto Vendite Mensili',
-            xaxis_title='Mese',
-            yaxis_title='Numero di Vendite',
+            title='Comparação:',
+            xaxis_title='Meses/Ano',
+            yaxis_title=title,
             template='ygridoff',  # Tema del grafico (opzionale)
             legend=dict(x=0, y=1)  # Posizione della legenda
         )
 
         # Mostra il grafico in Streamlit
         st.plotly_chart(fig)
-    
-    st.image('streamlit_application/img/Commerce Illustrations/vctrly-business-illustrations-4.png', width=150)
-    st.title(f"Análise Geográfica - {opcao}")
-    st.write('streamlit_application/img/Commerce Illustrations/vctrly-business-illustrations-4.png')
-    st.write('')
+
+
+    olist['order_delivered_carrier_date'] = pd.to_datetime(olist['order_delivered_carrier_date'])
+    olist['order_delivered_customer_date'] = pd.to_datetime(olist['order_delivered_customer_date'])
+    olist['duracao_envio_ate_cliente'] = (olist['order_delivered_customer_date'] - olist['order_delivered_carrier_date']).dt.days
 
 
 
@@ -163,233 +175,113 @@ def maps(olist, opcao):
 
 
 
+    @st.cache_data
+    def ordem(sales_data, dic):
+        # Rename the column 'month/year_of_purchase' to 'year_month' if needed
+        sales_data.rename(columns={'month/year_of_purchase': 'year_month'}, inplace=True)
+
+        # Convert 'year_month' to datetime format, allowing pandas to infer the format  
+        sales_data['year_month'] = pd.to_datetime(sales_data['year_month'], format='mixed', errors='coerce')
+
+        # Sort the data by 'year_month'
+        sales_data = sales_data.sort_values('year_month')
+        sales_data['month/year_of_purchase'] = sales_data['month_of_purchase'].astype(str) + '-' + sales_data['year_of_purchase'].astype(str)
+
+        sales_data = list(sales_data['month/year_of_purchase'].unique())
+
+        dic_ordinato = {key: dic.get(key, 0) for key in sales_data}
+
+        return sales_data, dic_ordinato
 
 
+    col1, col2 = st.columns(2) # [1.5, 2]
+    with col1:
+        capitais_vendedores = olist['seller_city'].nunique()
+        capitais_clientes = olist['customer_city'].nunique()
 
-    if opcao == 'Geral':
-        col1, col2 = st.columns([1.5, 2])
-        with col1:
-            capitais_vendedores = olist['seller_city'].nunique()
-            capitais_clientes = olist['customer_city'].nunique()
-            
-            mtc.markdown(mtc.formatar_numero_grande(capitais_clientes), ' de cidades compradoras', 
-                    f'{mtc.formatar_numero_grande(capitais_vendedores)} cidades com pontos de venda', '#F8F8FF')
-        with col2:
-            col01, col02, col03 = st.columns(3)
-            with col01:
-                coluna = mtc.escolher_opcao('Fator', list(olist.select_dtypes('number').columns))
-            with col02:
-                metrica = mtc.escolher_opcao('Métrica', ['Quantidade', 'Média'])
-            with col03:
-                territorio = mtc.escolher_opcao('Território', ['Estado', 'Região'])
+        st.image('streamlit_application/img/Commerce Illustrations/vctrly-business-illustrations-4.png', width=150)
 
-            def calc(coluna, metrica, territorio):
-                if territorio == 'Região':
-                    territorio = 'customer_zone'
-                if territorio == 'Estado':
-                    territorio = 'customer_state'
+        st.title(f"Análise Geográfica")
+        st.write('#### Explore e analise dados por região e zona para descobrir tendências e insights acionáveis')
 
-                if metrica == 'Quantidade':
-                    regioes = olist.groupby(territorio)[coluna].sum().to_dict().keys()
-                    valores = round(olist.groupby(territorio)[coluna].sum(), 2).to_dict().values()
+        mtc.markdown(mtc.formatar_numero_grande(capitais_clientes), ' de cidades compradoras', 
+                f'{mtc.formatar_numero_grande(capitais_vendedores)} cidades com pontos de venda', '#F8F8FF')      
 
-                if metrica == 'Média':
-                    regioes = olist.groupby(territorio)[coluna].mean().to_dict().keys()
-                    valores = round(olist.groupby(territorio)[coluna].mean(), 2).to_dict().values()
+    with col2:
+        col01, col02, col03 = st.columns(3)
+        with col01:
+            coluna = inverte_o_dicionario(mtc.escolher_opcao('Fator', list(colunas_renomeadas.values())))
+        with col02:
+            metrica = mtc.escolher_opcao('Métrica', ['Quantidade', 'Média'])
+        with col03:
+            territorio = mtc.escolher_opcao('Território', ['Estado', 'Região'])
 
-                return regioes, valores
-            
-            regioes, valores = calc(coluna, metrica, territorio)
-            grafico_barra(regioes, valores)
+        def calc(coluna, metrica, territorio):
+            if territorio == 'Região':
+                territorio = 'customer_zone'
+            if territorio == 'Estado':
+                territorio = 'customer_state'
 
-        col1, col2 = st.columns([1, 3])
-        with col1:
-            territorio_escolhido = mtc.escolher_opcao('', ['Estado', 'Região'])
+            if metrica == 'Quantidade':
+                regioes = olist.groupby(territorio)[coluna].sum().to_dict().keys()
+                valores = round(olist.groupby(territorio)[coluna].sum(), 2).to_dict().values()
 
-            if territorio_escolhido == 'Estado':
-                colonne_selezionate = mtc.multiselect(list(olist['customer_state'].unique()), 'Selecione o território')
-                vetor = 'customer_state'
-            elif territorio_escolhido == 'Região':
-                colonne_selezionate = mtc.multiselect(list(olist['customer_zone'].unique()), 'Selecione o território')
-                vetor = 'customer_zone'
+            if metrica == 'Média':
+                regioes = olist.groupby(territorio)[coluna].mean().to_dict().keys()
+                valores = round(olist.groupby(territorio)[coluna].mean(), 2).to_dict().values()
 
-        def ordem(sales_data, dic):
-            # Rename the column 'month/year_of_purchase' to 'year_month' if needed
-            sales_data.rename(columns={'month/year_of_purchase': 'year_month'}, inplace=True)
-
-            # Convert 'year_month' to datetime format, allowing pandas to infer the format  
-            sales_data['year_month'] = pd.to_datetime(sales_data['year_month'], format='mixed', errors='coerce')
-
-            # Sort the data by 'year_month'
-            sales_data = sales_data.sort_values('year_month')
-            sales_data['month/year_of_purchase'] = sales_data['month_of_purchase'].astype(str) + '-' + sales_data['year_of_purchase'].astype(str)
-
-            sales_data = list(sales_data['month/year_of_purchase'].unique())
-
-            dic_ordinato = {key: dic.get(key, 0) for key in sales_data}
-
-            return sales_data, dic_ordinato
+            return regioes, valores
         
-        with col2:
-            #st.write(ordem(olist, olist.groupby('month/year_of_purchase')['price'].mean().to_dict()))[0]
+        regioes, valores = calc(coluna, metrica, territorio)
+        grafico_barra(regioes, valores)
 
-            tempo_em_ordem = ordem(olist.copy(), olist.groupby('month/year_of_purchase')['price'].mean().to_dict())[1].keys()
-            traces = []
+    col1, col2 = st.columns([1, 3])
+    with col1:
+        feature = inverte_o_dicionario(mtc.escolher_opcao('Escolha uma fator:', list(colunas_renomeadas.values())))
+        metrica = mtc.escolher_opcao('Selecione uma métrica:', ['Soma total', 'Média'])
+        territorio_escolhido = mtc.escolher_opcao('Território:', ['Estado', 'Região'])
 
-            for x in colonne_selezionate:
-                linea = list(ordem(olist.copy(), 
-                                olist[olist[vetor] == x].groupby('month/year_of_purchase')['price'].mean().to_dict())[1].values())
-                
-                traces.append(linea)
-            
-            grafico_linea(list(tempo_em_ordem), traces, colonne_selezionate)
-            
-            
-            
-            #st.write(ordem(olist, olist.groupby('month/year_of_purchase')['price'].mean().to_dict())[0])
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    if opcao == 'Pontos de venda':
-        col1, col2 = st.columns([1, 3])
-        with col1:
-            pass
-        with col2:
-            fig = go.Figure()
-
-            fig.add_bar(x=['Data1', 'Data2', 'Data3'], y=[3, 5, 9], 
-                        name='Atividade dos usuários', marker_color='turquoise')# violet turquoise wheat yellowgreen
-            fig.add_bar(x=['Data1', 'Data2', 'Data3'], y=[2, 7, 6], 
-                        name='Novos usuários', marker_color='yellowgreen')
-
-            fig.update_layout(plot_bgcolor = "white", barmode='group', xaxis_title='Usuários', yaxis_title='Valore')
-            st.plotly_chart(fig)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    if opcao == 'Comparar regiões':
-        col1, col2, col3 = st.columns(3)
-        with col1:
-            grafico_radar()
-        with col2:
-            grafico_radar()
-        with col3:
-            grafico_radar()
-
-        col1, col2, col3 = st.columns(3)
-        with col1:
-            grafico_radar()
-        with col2:
-            grafico_radar()
-        with col3:
-            grafico_radar()   
-
-    #st.write()
-
+        if territorio_escolhido == 'Estado':
+            colonne_selezionate = mtc.multiselect(list(olist['customer_state'].unique()), 'Selecione os estados:')
+            vetor = 'customer_state'
+        elif territorio_escolhido == 'Região':
+            colonne_selezionate = mtc.multiselect(list(olist['customer_zone'].unique()), 'Selecione as regiões:')
+            vetor = 'customer_zone'
     
+    with col2:
+        #st.write(ordem(olist, olist.groupby('month/year_of_purchase')['price'].mean().to_dict()))[0]
+
+        tempo_em_ordem = ordem(olist.copy(), olist.groupby('month/year_of_purchase')['price'].mean().to_dict())[1].keys()
+        traces = []
+
+        for x in colonne_selezionate:
+            if metrica == 'Soma total':
+                linea = list(ordem(olist.copy(), 
+                                olist[olist[vetor] == x].groupby('month/year_of_purchase')[feature].sum().to_dict())[1].values())
+            elif metrica == 'Média':
+                linea = list(ordem(olist.copy(), 
+                                olist[olist[vetor] == x].groupby('month/year_of_purchase')[feature].mean().to_dict())[1].values())
+            
+            traces.append(linea)
+        
+        st.write(f'### Comparação {territorio_escolhido} no Período:')
+        grafico_linea(list(tempo_em_ordem), traces, colonne_selezionate, feature)
+    
+    col1, col2 = st.columns([1, 3])
+    
+    with col1:
+        regioes_estados_cidades = {
+            "Novas cidades vendedoras": "seller_city",
+            "Novos estados vendedores": "seller_state",
+            "Novas regiões vendedoras": "seller_zone",
+
+            "Novas regiões compradoras": "customer_zone",
+            "Novos estados compradores": "customer_state",
+            "Novas cidades compradoras": "customer_city"
+        }
+
+        feature = mtc.escolher_opcao('Escolha como será feita a análise', regioes_estados_cidades.keys())
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    # Supponiamo di avere un DataFrame con le colonne 'latitudine', 'longitudine', e 'tipo' (venditore o cliente)
-    data = {
-        'latitudine': [-23.5505, -22.9068, -15.8267, -19.9167, -3.1190, -8.0476],
-        'longitudine': [-46.6333, -43.1729, -47.9218, -43.9345, -60.0217, -34.8770],
-        'tipo': ['vendedor', 'cliente', 'vendedor', 'cliente', 'vendedor', 'cliente']
-    }
-
-    df = pd.DataFrame(data)
-
-    olist_cliente = olist['customer_zip_code_prefix'].to_list()
-    olist_cliente = olist_cliente[:10]
-    #st.write(olist_cliente)
-
-    olist_vendedor = olist['seller_zip_code_prefix'].to_list()
-    olist_vendedor = olist_vendedor[:10]
-    #st.write(olist_vendedor)
-
-    # Creiamo il grafico con Plotly Express
-    fig = px.scatter_mapbox(df, 
-                            lat='latitudine', 
-                            lon='longitudine', 
-                            color='tipo', 
-                            mapbox_style='open-street-map', 
-                            title="Mappa dei venditori e clienti",
-                            zoom=1)
-
-    # Mostriamo il grafico
-    #st.plotly_chart(fig)
-
-
-
+    with col2:
+        mtc.novos(olist, regioes_estados_cidades[feature], 1)

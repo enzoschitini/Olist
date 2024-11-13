@@ -2,6 +2,7 @@ import streamlit as st
 import pandas as pd
 import plotly.graph_objects as go
 import matplotlib.pyplot as plt
+import plotly.express as px
 import numpy as np
 
 import utils.metrics as mtc
@@ -117,8 +118,6 @@ def metricas_pedidos(olist):
         st.plotly_chart(fig)
 
     with col3:
-        import plotly.express as px
-
         # Interface do usuário para selecionar as variáveis
         st.write('## Forma de pagamento')
 

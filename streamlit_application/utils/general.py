@@ -7,7 +7,6 @@ import utils.elements as elements
 # App Developer:     Enzo Schitini -- Data Science
 # Date:              2 Outubro 2024 -- 22 Outubro 2024
 
-@st.cache_data
 def general(olist):
     # Definindo as datas
     data_inicio = pd.to_datetime(olist.head(1)['order_estimated_delivery_date'].values[0]) # 2017-09-29 00:00:00
@@ -37,6 +36,25 @@ def general(olist):
         mtc.order_id(olist)
     with grafico2:        
         group_by = olist.groupby('month/year_of_purchase', as_index=False)
-        mtc.line_metrics_time(group_by['payment_value'].sum(), 'payment_value', 'Faturamento médio mensal')
+        mtc.line_metrics_time(group_by['payment_value'].sum(), 'payment_value', 'Faturamento médio mensal') 
+
+    col1, col2 = st.columns([1, 3])
+    
+    with col1:
+        regioes_estados_cidades = {
+            "Novos vendedores": "seller_id",
+            "Novos clientes": "customer_id",
+
+            "Novos produtos": "product_id",
+            "Novas categorias de produtos": "product_category_name",
+
+            "Novos comentários e feedbacks": "review_id"
+        }
+
+        feature = mtc.escolher_opcao('Escolha como será feita a análise', regioes_estados_cidades.keys())
+
+
+    with col2:
+        mtc.novos(olist, regioes_estados_cidades[feature], 1)
 
 

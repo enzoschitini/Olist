@@ -1,2 +1,5 @@
 streamlit-option-menu
+pandas
+numpy
 plotly
+matplotlib

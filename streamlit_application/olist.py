@@ -113,8 +113,8 @@ def init():
     
     if selected == "Mapa":
         try:
-            opcao = mtc.escolher_opcao_sidbar('Escolha como quer ver as categorias', ['Geral', 'Pontos de venda', 'Comparar regiões'])
-            geo.maps(olist, opcao)
+            #opcao = mtc.escolher_opcao_sidbar('Escolha como quer ver as categorias', ['Geral', 'Pontos de venda', 'Comparar regiões'])
+            geo.maps(olist)
         except Exception as error:
             try_except('maps', 'geo', error)
     

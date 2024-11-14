@@ -4,18 +4,6 @@ import numpy as np
 import plotly.express as px
 import plotly.graph_objects as go
 
-# Aggiungi CSS personalizzato per impostare lo sfondo bianco
-st.markdown(
-    """
-    <style>
-    .stApp {
-        background-color: white;
-    }
-    </style>
-    """,
-    unsafe_allow_html=True
-)
-
 #df['default_cat'] = df['default']
 #df['default_cat'] = df['default_cat'].astype('object')
 

@@ -9,18 +9,6 @@ import locale
 # App Developer:     Enzo Schitini -- Data Science
 # Date:              2 Outubro 2024 -- 22 Outubro 2024
 
-# Aggiungi CSS personalizzato per impostare lo sfondo bianco
-st.markdown(
-    """
-    <style>
-    .stApp {
-        background-color: white;
-    }
-    </style>
-    """,
-    unsafe_allow_html=True
-)
-
 @st.cache_data
 def formatar_numero_grande(numero):
     if numero >= 1_000_000_000:

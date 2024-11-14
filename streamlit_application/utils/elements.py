@@ -4,19 +4,6 @@ import streamlit as st
 # Date:              2 Outubro 2024 -- 22 Outubro 2024
 
 def grupo_azul(titolo): 
-
-    # Aggiungi CSS personalizzato per impostare lo sfondo bianco
-    st.markdown(
-        """
-        <style>
-        .stApp {
-            background-color: white;
-        }
-        </style>
-        """,
-        unsafe_allow_html=True
-    )    
-
     # width: 300px;
     # Define HTML and CSS
     html_code = f"""

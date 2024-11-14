@@ -14,18 +14,6 @@ import utils.AnalyticsSetup as ast
 
 def metricas_pedidos(olist):
 
-    # Aggiungi CSS personalizzato per impostare lo sfondo bianco
-    st.markdown(
-        """
-        <style>
-        .stApp {
-            background-color: white;
-        }
-        </style>
-        """,
-        unsafe_allow_html=True
-    )
-
     colunas_renomeadas = {
         "order_item_id": "ID do item do pedido",
         "customer_zip_code_prefix": "Prefixo do CEP do cliente",

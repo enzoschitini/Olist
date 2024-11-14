@@ -6,17 +6,6 @@ import plotly.graph_objects as go
 import utils.metrics as mtc
 
 def maps(olist):
-    # Aggiungi CSS personalizzato per impostare lo sfondo bianco
-    st.markdown(
-        """
-        <style>
-        .stApp {
-            background-color: white;
-        }
-        </style>
-        """,
-        unsafe_allow_html=True
-    )
 
     colunas_renomeadas = {
         "order_item_id": "ID do item do pedido",

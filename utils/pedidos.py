@@ -199,7 +199,7 @@ def metricas_pedidos(olist):
     col1, col2 = st.columns([1.5, 3])
 
     with col1:
-        st.image('img/Commerce Illustrations/Order.png', width=150)
+        st.image('img/Commerce Illustrations/order.png', width=150)
         st.write(f'## Envio dos pedidos ')
         mtc.markdown('Duração média de 13 dias', '', f'{percentual_atraso}% dos pedidos chegam atrasados (atraso médio de {media_atraso} dias)', '4561FF')
     with col2:

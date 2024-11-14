@@ -30,7 +30,7 @@ password = st.session_state.get('password', '0')
 
 @st.cache_data
 def load_data():
-    olist = pd.read_csv('streamlit_application/data/Brazilian E-Commerce Public Dataset by Olist.csv').drop(columns='Unnamed: 0')
+    olist = pd.read_csv('data/Brazilian E-Commerce Public Dataset by Olist.csv').drop(columns='Unnamed: 0')
     return olist
 
 # Load the data

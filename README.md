@@ -1,2 +1,2 @@
-# Olist E-Commerce Insights [Applicazione]
-Este projeto de análise dos dados de e-commerce Olist é uma iniciativa fundamental para entender melhor o comportamento dos clientes e identificar oportunidades de otimização no processo de vendas. A partir da exploração de dados, o objetivo é gerar insights acionáveis para diversas áreas estratégicas da empresa.
+# MIST Misinformation Susceptibility Test [Enzo Schitini]
+Test how resilient you are to misinformation! Find out if you recognize fake news when you see it and how gullible you are within 2 minutes. 

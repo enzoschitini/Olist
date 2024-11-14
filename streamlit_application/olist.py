@@ -8,7 +8,7 @@ import utils.produtos as pdt
 import utils.metrics as mtc
 import utils.geodata as geo
 import utils.dataset as dts
-import streamlit_application.utils.about as abt
+import utils.about as abt
 
 # App Developer:     Enzo Schitini -- Data Science
 # Date:              2 Outubro 2024 -- 22 Outubro 2024

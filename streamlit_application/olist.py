@@ -24,28 +24,9 @@ import utils.about as abt
 logo = 'https://raw.githubusercontent.com/enzoschitini/Data-Science-Portfolio/refs/heads/main/01%20An%C3%A1lise%20explorat%C3%B3ria%20e%20limpeza%20de%20dados/E-commerce%20Customer%20Data%20For%20Behavior%20Analysis/Image/olistlogo.png'
 icon_page = 'https://raw.githubusercontent.com/enzoschitini/Olist/refs/heads/main/streamlit_application/img/Icone.png'
 
-st.set_page_config(
-    page_title="Misinformation Susceptibility Test (MIST)",
-    page_icon="🧐"
-)
-
-st.markdown(
-    """ <style>
-            div[role="radiogroup"] >  :first-child{
-                display: none !important;
-            }
-        </style>
-        """,
-    unsafe_allow_html=True
-)
-
-st.markdown(
-    """<style>
-div[class*="stRadio"] > label > div[data-testid="stMarkdownContainer"] > p {
-    font-size: 16px;
-}
-    </style>
-    """, unsafe_allow_html=True)
+st.set_page_config(layout="wide", initial_sidebar_state="expanded", page_title="Olist Insights", page_icon=icon_page)
+# Recupera a senha do session_state ou define como '0' inicialmente
+password = st.session_state.get('password', '0')
 
 @st.cache_data
 def load_data():

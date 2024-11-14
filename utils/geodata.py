@@ -40,7 +40,7 @@ def maps(olist):
         return chave_encontrada
 
 
-    geo = pd.read_csv('streamlit_application/data/olist_geolocation_dataset.csv')
+    geo = pd.read_csv('data/olist_geolocation_dataset.csv')
 
     olist = pd.DataFrame(olist)
     olist['geolocation_zip_code_prefix'] = olist['customer_zip_code_prefix']
@@ -199,7 +199,7 @@ def maps(olist):
         capitais_vendedores = olist['seller_city'].nunique()
         capitais_clientes = olist['customer_city'].nunique()
 
-        st.image('streamlit_application/img/Commerce Illustrations/vctrly-business-illustrations-4.png', width=150)
+        st.image('img/Commerce Illustrations/vctrly-business-illustrations-4.png', width=150)
 
         st.title(f"Análise Geográfica")
         st.write('#### Explore e analise dados por região e zona para descobrir tendências e insights acionáveis')

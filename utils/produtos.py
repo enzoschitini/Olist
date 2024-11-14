@@ -162,7 +162,7 @@ def metricas_produtos(olist, opcao):
     # Análise geral ###########################################################################################################
     # -------------------------------------------------------------------------------------------------------------------------
     if opcao == 'Análise geral':
-        st.image('streamlit_application/img/Commerce Illustrations/vctrly-business-illustrations-16.png', width=150)
+        st.image('img/Commerce Illustrations/vctrly-business-illustrations-16.png', width=150)
         st.title(f'Análise das {total} categorias de produtos')
 
         col_pizza_1, col_pizza_2, col_pizza_3 = st.columns(3)
@@ -179,7 +179,7 @@ def metricas_produtos(olist, opcao):
         col, col_list = st.columns([1, 3])
         
         with col:
-            st.image('streamlit_application/img/Commerce Illustrations/vctrly-business-illustrations-6-onlineshop.png', width=200)
+            st.image('img/Commerce Illustrations/vctrly-business-illustrations-6-onlineshop.png', width=200)
             st.write('### Escolha uma métrica para ordenar as categorias')
 
             # Função para converter o DataFrame para XLSX
@@ -266,7 +266,7 @@ def metricas_produtos(olist, opcao):
         titolo_01, titolo_02 = st.columns([1, 2])
 
         with titolo_01:
-             st.image('streamlit_application/img/Commerce Illustrations/vctrly-business-illustrations-200-presentation.png')
+             st.image('img/Commerce Illustrations/vctrly-business-illustrations-200-presentation.png')
              st.title(f'{categoria_nome}')
              st.write(f'#### Tempo de entrega: {envio}')
         with titolo_02:

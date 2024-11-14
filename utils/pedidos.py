@@ -82,7 +82,7 @@ def metricas_pedidos(olist):
     col1, col2, col3 = st.columns(3) # [3, 1.5]
 
     with col1:
-        st.image('streamlit_application/img/Commerce Illustrations/vctrly-business-illustrations-3-unboxing.png', width=150)
+        st.image('img/Commerce Illustrations/vctrly-business-illustrations-3-unboxing.png', width=150)
         st.title(f"Análise dos Pedidos")
         #elements.grupo_azul(f'Média {dicionario_medias['price']} Preço')
         
@@ -136,7 +136,7 @@ def metricas_pedidos(olist):
         select = st.selectbox('Selecione uma coluna', colunas_numericas_ptbr)
         col_plot = encontrar_chave(colunas_renomeadas, select)
 
-        st.image('streamlit_application/img/Commerce Illustrations/vctrly-business-illustrations-9.png')
+        st.image('img/Commerce Illustrations/vctrly-business-illustrations-9.png')
         st.write(f'## {round(olist[col_plot].mean(), 2)} {select} (Média)')
 
         #mtc.markdown(f'{round(olist[col_plot].mean(), 2)}', f'{select} (Média)', '', '#F8F8FF')
@@ -199,7 +199,7 @@ def metricas_pedidos(olist):
     col1, col2 = st.columns([1.5, 3])
 
     with col1:
-        st.image('streamlit_application/img/Commerce Illustrations/Order.png', width=150)
+        st.image('img/Commerce Illustrations/Order.png', width=150)
         st.write(f'## Envio dos pedidos ')
         mtc.markdown('Duração média de 13 dias', '', f'{percentual_atraso}% dos pedidos chegam atrasados (atraso médio de {media_atraso} dias)', '4561FF')
     with col2:
@@ -217,15 +217,15 @@ def metricas_pedidos(olist):
         return mean_seconds, mean_minutes, mean_hours, mean_days
 
     with col1:
-        st.image('streamlit_application/img/icons/office-stamp-document-13.png', width=150)
+        st.image('img/icons/office-stamp-document-13.png', width=150)
         mtc.markdown('Aprovação da compra:', f'{round(convert(olist['duracao_aprovacao'].mean())[2])} Horas', f'Tempo médio desde o momento da compra até a aprovação da compra', '4561FF')
 
     with col2:
-        st.image('streamlit_application/img/icons/worldwide-web-location-pin-25.png', width=150)
+        st.image('img/icons/worldwide-web-location-pin-25.png', width=150)
         mtc.markdown('Envio até o correio:', f'{round(convert(olist['duracao_envio_ate_correio'].mean())[3])} Dias', f'Duração média desde a aprovação da compra até a chegada ao correio', '4561FF')
 
     with col3:
-        st.image('streamlit_application/img/icons/business-coaching-strategy-1-36.png', width=150)
+        st.image('img/icons/business-coaching-strategy-1-36.png', width=150)
         mtc.markdown('Envio até o cliente:', f'{round(convert(olist['duracao_envio_ate_cliente'].mean())[3])} Dias', f'Duração média desde o correio até serem enviados aos clientes ', '4561FF')
 
     col1, col2 = st.columns(2)

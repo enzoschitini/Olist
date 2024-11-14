@@ -26,7 +26,19 @@ icon_page = 'https://raw.githubusercontent.com/enzoschitini/Olist/refs/heads/mai
 
 st.set_page_config(layout="wide", initial_sidebar_state="expanded", page_title="Olist Insights", page_icon=icon_page)
 # Recupera a senha do session_state ou define como '0' inicialmente
-password = st.session_state.get('password', '0')
+#password = st.session_state.get('password', '0')
+
+# Aggiungi CSS personalizzato per impostare lo sfondo bianco
+st.markdown(
+    """
+    <style>
+    .stApp {
+        background-color: white;
+    }
+    </style>
+    """,
+    unsafe_allow_html=True
+)
 
 @st.cache_data
 def load_data():

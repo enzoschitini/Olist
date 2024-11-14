@@ -8,6 +8,18 @@ import utils.elements as elements
 # Date:              2 Outubro 2024 -- 22 Outubro 2024
 
 def general(olist):
+    # Aggiungi CSS personalizzato per impostare lo sfondo bianco
+    st.markdown(
+        """
+        <style>
+        .stApp {
+            background-color: white;
+        }
+        </style>
+        """,
+        unsafe_allow_html=True
+    )
+
     # Definindo as datas
     data_inicio = pd.to_datetime(olist.head(1)['order_estimated_delivery_date'].values[0]) # 2017-09-29 00:00:00
     data_fim = pd.to_datetime(olist.tail(1)['order_estimated_delivery_date'].values[0]) # 2018-04-30 00:00:00

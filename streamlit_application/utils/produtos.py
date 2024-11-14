@@ -11,6 +11,18 @@ import utils.metrics as mtc
 # Date:              2 Outubro 2024 -- 22 Outubro 2024
 
 def metricas_produtos(olist, opcao):
+    # Aggiungi CSS personalizzato per impostare lo sfondo bianco
+    st.markdown(
+        """
+        <style>
+        .stApp {
+            background-color: white;
+        }
+        </style>
+        """,
+        unsafe_allow_html=True
+    )
+
     olist = pd.DataFrame(olist)
     total = len(list(set(olist['product_category_name'].to_list())))
 

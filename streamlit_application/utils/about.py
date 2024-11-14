@@ -5,6 +5,18 @@ import streamlit as st
 
 schema = 'https://raw.githubusercontent.com/enzoschitini/Data-Science-Portfolio/refs/heads/main/01%20An%C3%A1lise%20explorat%C3%B3ria%20e%20limpeza%20de%20dados/E-commerce%20Customer%20Data%20For%20Behavior%20Analysis/Image/Schema.png'
 
+# Aggiungi CSS personalizzato per impostare lo sfondo bianco
+st.markdown(
+    """
+    <style>
+    .stApp {
+        background-color: white;
+    }
+    </style>
+    """,
+    unsafe_allow_html=True
+)
+
 @st.cache_data
 def about(olist):
     st.title("Olist - Análise de Dados do E-commerce")

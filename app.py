@@ -4,6 +4,7 @@ import streamlit as st
 # Date:              2 Outubro 2024 -- 22 Outubro 2024
 
 schema = 'https://raw.githubusercontent.com/enzoschitini/Data-Science-Portfolio/refs/heads/main/01%20An%C3%A1lise%20explorat%C3%B3ria%20e%20limpeza%20de%20dados/E-commerce%20Customer%20Data%20For%20Behavior%20Analysis/Image/Schema.png'
+st.set_page_config(layout="wide")
 
 @st.cache_data
 def about():

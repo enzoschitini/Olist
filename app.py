@@ -6,11 +6,9 @@ import streamlit as st
 schema = 'https://raw.githubusercontent.com/enzoschitini/Data-Science-Portfolio/refs/heads/main/01%20An%C3%A1lise%20explorat%C3%B3ria%20e%20limpeza%20de%20dados/E-commerce%20Customer%20Data%20For%20Behavior%20Analysis/Image/Schema.png'
 
 @st.cache_data
-def about(olist):
+def about():
     st.title("Olist - Análise de Dados do E-commerce")
     st.write("### Identificando Oportunidades de Crescimento e Melhoria Através da Exploração de Dados de Vendas")
-
-    st.image('streamlit_application/img/Enzo Schitini.png', width=800)
 
     st.write("""
 
@@ -87,3 +85,5 @@ def about(olist):
 
     #st.image('https://avatars.githubusercontent.com/u/70824630?s=400&u=5da7469a6e31d8823f89933b83c2450af0817589&v=4', width=100)
     st.image(schema)
+
+about()

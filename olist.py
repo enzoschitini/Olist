@@ -89,7 +89,7 @@ def init():
             st.write(error)
 
     if selected == "Métricas Gerais":
-        st.image('streamlit_application/img/Commerce Illustrations/vctrly-business-illustrations-220-work-on-computer.png', width=200)
+        st.image('img/Commerce Illustrations/vctrly-business-illustrations-220-work-on-computer.png', width=200)
         st.title(f"{selected} - Painel de controle Olist")
         try:
             all.general(olist)
@@ -152,7 +152,7 @@ def senha():
             password = st.text_input("Insira o número da senha e clique enter:", key="password")
 
         with col2:
-            st.image('streamlit_application/img/cover.png')
+            st.image('img/cover.png')
         
     else:
         # Senha correta, exibe mensagem de sucesso

@@ -10,7 +10,7 @@ def about(olist):
     st.title("Olist - Análise de Dados do E-commerce")
     st.write("### Identificando Oportunidades de Crescimento e Melhoria Através da Exploração de Dados de Vendas")
 
-    st.image('streamlit_application/img/Enzo Schitini.png', width=800)
+    st.image('img/Enzo Schitini.png', width=800)
 
     st.write("""
 

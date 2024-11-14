@@ -8,7 +8,7 @@ import utils.produtos as pdt
 import utils.metrics as mtc
 import utils.geodata as geo
 import utils.dataset as dts
-import streamlit_application.utils.about as abt
+import utils.about as abt
 
 # App Developer:     Enzo Schitini -- Data Science
 # Date:              2 Outubro 2024 -- 22 Outubro 2024
@@ -22,7 +22,7 @@ import streamlit_application.utils.about as abt
 # 
 
 logo = 'https://raw.githubusercontent.com/enzoschitini/Data-Science-Portfolio/refs/heads/main/01%20An%C3%A1lise%20explorat%C3%B3ria%20e%20limpeza%20de%20dados/E-commerce%20Customer%20Data%20For%20Behavior%20Analysis/Image/olistlogo.png'
-icon_page = 'streamlit_application/img/icone.png'
+icon_page = 'https://raw.githubusercontent.com/enzoschitini/Olist/refs/heads/main/streamlit_application/img/Icone.png'
 
 st.set_page_config(layout="wide", initial_sidebar_state="expanded", page_title="Olist Insights", page_icon=icon_page)
 # Recupera a senha do session_state ou define como '0' inicialmente
@@ -68,8 +68,8 @@ def init():
     with st.sidebar:
         selected = option_menu(
             menu_title="",  # required
-            options=["Métricas Gerais", "Pedidos", "Produtos", "Mapa", "Avaliações", "Data Base", "Sobre"],  # required
-            icons=["grid", "box", "bag", "map", "award", "database", "book"],  # optional
+            options=["Métricas Gerais", "Pedidos", "Produtos", "Mapa", "Sobre"],  # required
+            icons=["grid", "box", "bag", "map", "book"],  # optional
             menu_icon="cast",  # optional
             default_index=0,  # optional
             styles={

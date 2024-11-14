@@ -356,14 +356,7 @@ if (agree or disagree):
                     
                 item_data = {st.session_state.mist_item_labels[st.session_state.items_order20[i]]: st.session_state.answers[i] for i in range(20)}
                 user_data.update(item_data)
-                
-                from pymongo.mongo_client import MongoClient
-                from pymongo.server_api import ServerApi
-                with MongoClient(st.secrets["mongo"],server_api=ServerApi('1')) as client:
-                    db = client.mist
-                    collection = db.app
-                    collection.insert_one(user_data)  
-                    st.session_state.inserted20 = True
+            
 
 
 #  MIST 16
@@ -568,12 +561,5 @@ if (agree or disagree):
                 
                 item_data = {st.session_state.mist_item_labels[st.session_state.items_order16[i]]: st.session_state.answers[i] for i in range(16)}
                 user_data.update(item_data)
-                
-                from pymongo.mongo_client import MongoClient
-                from pymongo.server_api import ServerApi
-                with MongoClient(st.secrets["mongo"],server_api=ServerApi('1')) as client:
-                    db = client.mist
-                    collection = db.app
-                    collection.insert_one(user_data)
-                    st.session_state.inserted16 = True
+    
 

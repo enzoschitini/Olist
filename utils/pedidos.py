@@ -87,7 +87,7 @@ def metricas_pedidos(olist):
         #elements.grupo_azul(f'Média {dicionario_medias['price']} Preço')
         
 
-        mtc.markdown(f'{dicionario_medias['payment_value']}', ' - Valor médio dos pedidos', f'Preço médio: {dicionario_medias['price']} Frete médio: {dicionario_medias['freight_value']}', '#F8F8FF')
+        mtc.markdown(f'{dicionario_medias['payment_value']}', ' - Valor médio dos pedidos', f'Preço médio: {dicionario_medias['price']} • Frete médio: {dicionario_medias['freight_value']}', '#F8F8FF')
         mtc.markdown(f'{dicionario_medias['payment_installments']}', ' - Número médio de parcelas', f'Valor médio por parcela: {dicionario_medias['installments_price']}', '#F8F8FF')
 
     with col2:
@@ -133,7 +133,7 @@ def metricas_pedidos(olist):
     with col01:
         #st.write('### Boxplot')
 
-        select = st.selectbox('Selecione uma coluna', colunas_numericas_ptbr)
+        select = st.selectbox('Selecione um fator', colunas_numericas_ptbr)
         col_plot = encontrar_chave(colunas_renomeadas, select)
 
         st.image('img/Commerce Illustrations/vctrly-business-illustrations-9.png')
@@ -147,7 +147,7 @@ def metricas_pedidos(olist):
             mtc.boxplot(olist, col_plot)
         with dispersao:
             st.write('Escolha mais uma variável para gráfico de dispersão')
-            select = st.selectbox('Selecioane uma coluna', colunas_numericas_ptbr)
+            select = st.selectbox('', colunas_numericas_ptbr)
             col_disp = encontrar_chave(colunas_renomeadas, select)
             # Criar o gráfico de dispersão
             fig = px.scatter(olist, x=col_plot, y=col_disp, title='Gráfico de Dispersão')
@@ -156,6 +156,10 @@ def metricas_pedidos(olist):
 
             # Exibir o gráfico na aplicação Streamlit
             st.plotly_chart(fig)
+    
+    mtc.espaco()
+        
+    st.write('### Análise dos Quartis:')
     
     mtc.partes(olist, col_plot)
 
@@ -204,7 +208,9 @@ def metricas_pedidos(olist):
         mtc.markdown('Duração média de 13 dias', '', f'{percentual_atraso}% dos pedidos chegam atrasados (atraso médio de {media_atraso} dias)', '4561FF')
     with col2:
         group_by = olist.groupby('month/year_of_purchase', as_index=False)
-        mtc.line_metrics_time(group_by['shipping_duration_days'].mean(), 'shipping_duration_days', 'Duração das entregas em dias')
+        mtc.line_metrics_time(group_by['shipping_duration_days'].mean(), 'shipping_duration_days', 'Duração média mensal das entregas: (em dias)    ')
+    
+    st.write('### Duração das etapas:')
     
     col1, col2, col3 = st.columns(3)
     def convert(tempo):

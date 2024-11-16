@@ -61,14 +61,19 @@ def periodo(olist):
 def init():
     # Impostazioni della barra laterale
     st.sidebar.image(logo, width=150)
-    st.sidebar.write('# E-Commerce Dashboard')
+    st.sidebar.write('# Dashboard Insights')
+    st.sidebar.write("""
+    Painel de controle Olist por: 
+    [Enzo Schitini](https://www.linkedin.com/in/enzoschitini/)
+    """)
+    
     st.sidebar.write('')  
 
     # 1. Sidebar menu
     with st.sidebar:
         selected = option_menu(
             menu_title="",  # required
-            options=["Métricas Gerais", "Pedidos", "Produtos", "Mapa", "Sobre"],  # required
+            options=["Home", "Pedidos", "Produtos", "Mapa", "Sobre"],  # required
             icons=["grid", "box", "bag", "map", "book"],  # optional
             menu_icon="cast",  # optional
             default_index=0,  # optional
@@ -88,9 +93,9 @@ def init():
         with st.expander("Relatório do erro"):
             st.write(error)
 
-    if selected == "Métricas Gerais":
+    if selected == "Home":
         st.image('img/Commerce Illustrations/vctrly-business-illustrations-220-work-on-computer.png', width=200)
-        st.title(f"{selected} - Painel de controle Olist")
+        st.title(f"{selected} - Visão Geral")
         try:
             all.general(olist)
         except Exception as error:
@@ -130,11 +135,6 @@ def init():
         st.write(f"### {selected}")
         abt.about(olist)
 
-
-    st.sidebar.write("""
-    ---
-    [Enzo Schitini](https://www.linkedin.com/in/enzoschitini/)
-    """)
 
 init()
 

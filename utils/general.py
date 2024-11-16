@@ -22,13 +22,13 @@ def general(olist):
     
     with col1:
         mtc.markdown(mtc.formatar_numero_grande(len(list(olist['order_id']))), ' Produtos Vendidos', 
-                 f'{round(len(list(olist['order_id'])) / diferenca_dias)} Vendas/Dia', '#F8F8FF')
+                 f'{round(len(list(olist['order_id'])) / diferenca_dias)} Vendas diárias', '#F8F8FF')
     with col2:
         mtc.markdown(mtc.formatar_numero_grande(sum(list(olist['payment_value']))), ' de faturamento', 
-                 f'{mtc.formatar_numero_grande(round(sum(list(olist['payment_value'])) / diferenca_dias))}/Dia', '#F8F8FF')
+                 f'{mtc.formatar_numero_grande(round(sum(list(olist['payment_value'])) / diferenca_dias))} de faturamento diário', '#F8F8FF')
     with col3:
-        mtc.markdown(mtc.formatar_numero_grande(capitais_clientes), ' de cidades compradoras', 
-                 f'{mtc.formatar_numero_grande(capitais_vendedores)} cidades com pontos de venda', '#F8F8FF')
+        mtc.markdown(mtc.formatar_numero_grande(capitais_clientes), ' Cidades compradoras', 
+                 f'{mtc.formatar_numero_grande(capitais_vendedores)} Cidades com pontos de venda', '#F8F8FF')
     
     grafico1, grafico2 = st.columns([3, 2])
     

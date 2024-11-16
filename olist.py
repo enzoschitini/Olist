@@ -73,7 +73,7 @@ def init():
     with st.sidebar:
         selected = option_menu(
             menu_title="",  # required
-            options=["Home", "Pedidos", "Produtos", "Mapa", "Sobre"],  # required
+            options=["Home", "Pedidos", "Produtos", "Análise Geográfica", "Sobre"],  # required
             icons=["grid", "box", "bag", "map", "book"],  # optional
             menu_icon="cast",  # optional
             default_index=0,  # optional
@@ -116,7 +116,7 @@ def init():
         except Exception as error:
             try_except('metricas_produtos', 'produtos', error)
     
-    if selected == "Mapa":
+    if selected == "Análise Geográfica":
         try:
             #opcao = mtc.escolher_opcao_sidbar('Escolha como quer ver as categorias', ['Geral', 'Pontos de venda', 'Comparar regiões'])
             geo.maps(olist)

@@ -181,6 +181,7 @@ def metricas_produtos(olist, opcao):
         with col:
             st.image('img/Commerce Illustrations/vctrly-business-illustrations-6-onlineshop.png', width=200)
             st.write('### Escolha uma métrica para ordenar as categorias')
+            ordenar_por = mtc.escolher_opcao('Ordenar por', list(dados_categorias.drop(columns='Categoria').columns))
 
             # Função para converter o DataFrame para XLSX
             def convert_df_to_excel(df):
@@ -229,8 +230,6 @@ def metricas_produtos(olist, opcao):
             )
 
         with col_list:
-            ordenar_por = mtc.escolher_opcao('Ordenar por', list(dados_categorias.drop(columns='Categoria').columns))
-
             df_ordenado = dados_categorias.sort_values(by=ordenar_por, ascending=False)
             categorias = df_ordenado['Categoria'].to_list()
 
@@ -311,5 +310,6 @@ def metricas_produtos(olist, opcao):
         mtc.partes(olist[olist['product_category_name'] == categoria_escolhida], col_select)
 
         if order_item_id.shape[0] > 1:
+             st.write(f'### O que mais tem a ver com: {categoria_escolhida.replace('_', ' ').capitalize()}')
              mtc.grafico_categoria('product_category_name', order_item_id, f'Categorias associadas')
             

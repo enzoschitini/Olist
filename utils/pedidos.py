@@ -44,7 +44,7 @@ def metricas_pedidos(olist):
                 return chave
         return None  # Se não encontrar
 
-    colunas_numericas = ['payment_value', 'price', 'freight_value', 'payment_installments', 'installments_price', 'shipping_duration_days',
+    colunas_numericas = ['payment_value', 'price', 'freight_value', 'payment_installments', 'installments_price',
                          'product_name_lenght', 'product_description_lenght', 'product_photos_qty', 'product_weight_g', 
                          'product_length_cm', 'product_height_cm', 'product_width_cm', 'Kg']
     colunas_numericas_ptbr = []
@@ -131,8 +131,6 @@ def metricas_pedidos(olist):
 
     col01, col02 = st.columns([1, 4])
     with col01:
-        #st.write('### Boxplot')
-
         select = st.selectbox('Selecione um fator', colunas_numericas_ptbr)
         col_plot = encontrar_chave(colunas_renomeadas, select)
 

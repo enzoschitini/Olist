@@ -4,7 +4,6 @@ import plotly.express as px
 import matplotlib.pyplot as plt
 import plotly.graph_objects as go
 import seaborn as sns
-import locale
 
 # App Developer:     Enzo Schitini -- Data Science
 # Date:              2 Outubro 2024 -- 22 Outubro 2024

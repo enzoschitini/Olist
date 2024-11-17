@@ -31,12 +31,11 @@ def general(olist):
                  f'{mtc.formatar_numero_grande(capitais_vendedores)} Cidades com pontos de venda', '#F8F8FF')
     
     grafico1, grafico2 = st.columns([3, 2])
+    group_by = olist.groupby('month/year_of_purchase', as_index=False)
     
     with grafico1:
-        #mtc.order_id(olist)
-        pass
-    with grafico2:        
-        group_by = olist.groupby('month/year_of_purchase', as_index=False)
+        mtc.bar_metrics_time(group_by['order_id'].count(), 'order_id', 'Quantidade de Pedidos Vendidos por Mês')
+    with grafico2:
         mtc.line_metrics_time(group_by['payment_value'].sum(), 'payment_value', 'Faturamento médio mensal') 
 
     col1, col2 = st.columns([1, 3])

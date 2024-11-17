@@ -263,6 +263,38 @@ def line_metrics_time(sales_data, categoria, title):
     st.plotly_chart(fig)
 
 @st.cache_data
+def bar_metrics_time(sales_data, categoria, title):
+    # Rename the column 'month/year_of_purchase' to 'year_month' if needed
+    sales_data.rename(columns={'month/year_of_purchase': 'year_month'}, inplace=True)
+
+    # Convert 'year_month' to datetime format, allowing pandas to infer the format  
+    sales_data['year_month'] = pd.to_datetime(sales_data['year_month'], format='mixed', errors='coerce')
+
+    # Check for any NaT values after conversion
+    if sales_data['year_month'].isna().sum() > 0:
+        st.write("Warning: Some dates couldn't be parsed and have been set to NaT.")
+
+    # Sort the data by 'year_month'
+    sales_data = sales_data.sort_values('year_month')
+
+    # Create the bar plot
+    fig = px.bar(sales_data, 
+                 x='year_month', 
+                 y=categoria, 
+                 title=title,
+                 labels={'year_month': 'Mês/Ano', categoria: f'Valor {categoria}'},
+                 template='ygridoff') 
+    
+    # Update y-axis for currency format if needed
+    fig.update_yaxes(tickprefix="")
+
+    # Optional: Add grid lines
+    fig.update_layout(xaxis=dict(showgrid=True), yaxis=dict(showgrid=True))
+
+    # Display in Streamlit
+    st.plotly_chart(fig)
+
+@st.cache_data
 def grafico_pizza_rank(olist, coluna, title, calcolo):
     # Agrupar as categorias e somar o valor de pagamento
     if calcolo == 'sum':

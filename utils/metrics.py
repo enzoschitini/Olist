@@ -120,30 +120,6 @@ def grafico(olist):
     st.plotly_chart(fig)
 
 @st.cache_data
-def order_id(olist):
-    # Definir o locale para português (Brasil)
-    locale.setlocale(locale.LC_TIME, 'pt_BR.UTF-8')  # Use 'pt_BR.UTF-8' para Linux/Mac e 'Portuguese_Brazil.1252' no Windows
-
-    # Converter a coluna de data para o formato datetime
-    olist['order_purchase_timestamp'] = pd.to_datetime(olist['order_purchase_timestamp'])
-
-    # Agrupar os dados por mês e contar o número de pedidos (order_id)
-    olist['month_year'] = olist['order_purchase_timestamp'].dt.to_period('M')  # Extrai ano-mês
-    orders_per_month = olist.groupby('month_year').size().reset_index(name='order_count')
-
-    # Converter o período para string no formato de mês em português
-    orders_per_month['month_year'] = orders_per_month['month_year'].dt.strftime('%B %Y')  # Nome completo do mês em português
-
-    # Criar o gráfico de linha usando Plotly
-    fig = px.bar(orders_per_month, x='month_year', y='order_count', title='Quantidade de Pedidos por Mês')
-
-    # Ajustar o layout do eixo x para exibir corretamente os nomes
-    fig.update_layout(xaxis_title='Mês', yaxis_title='Quantidade de Pedidos')
-
-    # Exibir o gráfico no Streamlit
-    st.plotly_chart(fig)
-
-@st.cache_data
 def boxplot(olist, col):
     # Calcola i limiti per gli outliers usando IQR
     Q1 = olist[col].quantile(0.25)

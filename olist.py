@@ -73,8 +73,8 @@ def init():
     with st.sidebar:
         selected = option_menu(
             menu_title="",  # required
-            options=["Home", "Pedidos", "Produtos", "Análise Geográfica", "Sobre"],  # required
-            icons=["grid", "box", "bag", "map", "book"],  # optional
+            options=["Sobre", "Home", "Pedidos", "Produtos", "Análise Geográfica"],  # required
+            icons=["book", "grid", "box", "bag", "map"],  # optional
             menu_icon="cast",  # optional
             default_index=0,  # optional
             styles={

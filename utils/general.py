@@ -33,7 +33,8 @@ def general(olist):
     grafico1, grafico2 = st.columns([3, 2])
     
     with grafico1:
-        mtc.order_id(olist)
+        #mtc.order_id(olist)
+        pass
     with grafico2:        
         group_by = olist.groupby('month/year_of_purchase', as_index=False)
         mtc.line_metrics_time(group_by['payment_value'].sum(), 'payment_value', 'Faturamento médio mensal') 

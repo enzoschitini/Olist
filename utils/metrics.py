@@ -121,11 +121,6 @@ def grafico(olist):
 
 @st.cache_data
 def order_id(olist):
-    try:
-        locale.setlocale(locale.LC_TIME, 'pt_BR.UTF-8')
-    except locale.Error as e:
-        st.warning(f"Impossibile impostare la localizzazione: {e}. Utilizzo della localizzazione predefinita.")
-
     # Definir o locale para português (Brasil)
     locale.setlocale(locale.LC_TIME, 'pt_BR.UTF-8')  # Use 'pt_BR.UTF-8' para Linux/Mac e 'Portuguese_Brazil.1252' no Windows
 

@@ -24,6 +24,8 @@ Uma pesquisa abrangente sobre tendências demográficas e de saúde em 2019 no e
 
 ![](https://raw.githubusercontent.com/enzoschitini/Olist/refs/heads/streamlit/img/cover.png)
 
+#####
+
 ### O que você vai encontrar nesta análise? 👋
 
 Vamos explorar os dados do *Sistema de Informação sobre Nascidos Vivos (SINASC)* relativos aos recém-nascidos nascidos no estado de Rondônia, Brasil, no ano de 2019. Assim que a análise exploratória for concluída, prosseguiremos para identificar insights e avaliar a saúde pública no estado.
@@ -60,25 +62,23 @@ Os dados utilizados neste projeto foram extraídos do portal do governo, mais pr
 O conjunto de dados pode ser encontrado no site do governo brasileiro e segue políticas de privacidade, o que significa que não há nomes de pessoas ou qualquer coisa que nos permita saber quem são os indivíduos.
 
              
-######
-
-### Desenvolvedor:
-             
-![](https://raw.githubusercontent.com/enzoschitini/Olist/refs/heads/streamlit/img/Enzo%20Schitini.png)
-
-##### [Enzo Schitini](https://www.linkedin.com/in/enzoschitini/) - Data Scientist • Expert Bubble.io • UX & UI @ Nugus creator
-
-
-######
-
-Este projeto visa analisar dados de um e-commerce, com o objetivo de identificar padrões de comportamento do cliente, tendências de mercado e oportunidades de otimização. Através da exploração de dados, pretende-se obter insights valiosos sobre a performance da plataforma, a satisfação do cliente e os fatores que influenciam o sucesso das vendas. A análise abrangerá diversos aspectos, desde a análise de produtos mais vendidos até a identificação de gargalos no processo de entrega, passando pela análise de comportamento do cliente e a segmentação de público. 
-######
-https://github.com/enzoschitini/Data-Science-Portfolio
-             
----       
+######   
     """)
 
+    st.write('### Desenvolvedor:')
 
+    col1, col2 = st.columns([3, 2])
+
+    with col1:
+        st.write('![](https://raw.githubusercontent.com/enzoschitini/Olist/refs/heads/streamlit/img/Enzo%20Schitini.png)')
+    with col2:
+        st.write("""
+        ##### [Enzo Schitini](https://www.linkedin.com/in/enzoschitini/) - Data Scientist • Expert Bubble.io • UX & UI @ Nugus creator
+        Este projeto visa analisar dados de um e-commerce, com o objetivo de identificar padrões de comportamento do cliente, tendências de mercado e oportunidades de otimização. Através da exploração de dados, pretende-se obter insights valiosos sobre a performance da plataforma, a satisfação do cliente e os fatores que influenciam o sucesso das vendas. A análise abrangerá diversos aspectos, desde a análise de produtos mais vendidos até a identificação de gargalos no processo de entrega, passando pela análise de comportamento do cliente e a segmentação de público. 
+        ######
+        https://github.com/enzoschitini/Data-Science-Portfolio
+
+        """)
 
 
 
@@ -90,7 +90,9 @@ https://github.com/enzoschitini/Data-Science-Portfolio
 
     st.write("""
 ######
-             
+---
+######
+      
 ## Preparação dos dados e análise exploratória
 
 #####
@@ -290,11 +292,6 @@ O gráfico mostra a quantidade de nascimentos ao longo do ano de 2019 em Rondôn
 #####
              
 ## Uploads - Atualizações
-#####
-
-![](https://media.licdn.com/dms/image/v2/D5612AQGTWZtZzbXyHA/article-inline_image-shrink_1500_2232/article-inline_image-shrink_1500_2232/0/1721195567492?e=1735776000&v=beta&t=9vLZBrov8c6Xs2WIlOg6pPPmMZFU5lhejHq_a9XbDto)
-
-## Como a análise será realizada:
 
 O gráfico mostra a quantidade de nascimentos ao longo do ano de 2019 em Rondônia. O gráfico apresenta flutuações ao longo do ano, com vários picos e vales. Isso sugere que a quantidade de nascimentos variou mês a mês. Os meses com os maiores picos podem indicar períodos de maior atividade de nascimentos, enquanto os vales podem representar momentos de menor atividade.
 
@@ -322,11 +319,6 @@ O gráfico mostra a quantidade de nascimentos ao longo do ano de 2019 em Rondôn
 #####
              
 ## Execute no seu computador
-#####
-
-![](https://media.licdn.com/dms/image/v2/D5612AQGTWZtZzbXyHA/article-inline_image-shrink_1500_2232/article-inline_image-shrink_1500_2232/0/1721195567492?e=1735776000&v=beta&t=9vLZBrov8c6Xs2WIlOg6pPPmMZFU5lhejHq_a9XbDto)
-
-## Como a análise será realizada:
 
 O gráfico mostra a quantidade de nascimentos ao longo do ano de 2019 em Rondônia. O gráfico apresenta flutuações ao longo do ano, com vários picos e vales. Isso sugere que a quantidade de nascimentos variou mês a mês. Os meses com os maiores picos podem indicar períodos de maior atividade de nascimentos, enquanto os vales podem representar momentos de menor atividade.
 
@@ -347,8 +339,7 @@ O gráfico mostra a quantidade de nascimentos ao longo do ano de 2019 em Rondôn
         """)
 
     st.write('####')
-    st.write('## Mais Informações:')
-    st.write('#####')
+    st.write('### Mais Informações:')
 
     col1, col2 = st.columns(2)
 
@@ -394,6 +385,8 @@ O gráfico mostra a quantidade de nascimentos ao longo do ano de 2019 em Rondôn
 
     
     st.write("""
+            
+            ######
 
             ### Metodologia
 

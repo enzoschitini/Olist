@@ -4,83 +4,84 @@ import streamlit as st
 # Date:              2 Outubro 2024 -- 22 Outubro 2024
 
 schema = 'https://raw.githubusercontent.com/enzoschitini/Data-Science-Portfolio/refs/heads/main/01%20An%C3%A1lise%20explorat%C3%B3ria%20e%20limpeza%20de%20dados/E-commerce%20Customer%20Data%20For%20Behavior%20Analysis/Image/Schema.png'
+copertina = 'img/cover.png'
 
 @st.cache_data
 def about(olist):
-    st.title("Olist - Análise de Dados do E-commerce")
-    st.write("### Identificando Oportunidades de Crescimento e Melhoria Através da Exploração de Dados de Vendas")
-
-    st.image('img/Enzo Schitini.png', width=800)
-
-    st.write("""
-
-    Este projeto visa analisar dados de um e-commerce, com o objetivo de identificar padrões de comportamento do cliente, tendências de mercado e oportunidades de otimização. Através da exploração de dados, pretende-se obter insights valiosos sobre a performance da plataforma, a satisfação do cliente e os fatores que influenciam o sucesso das vendas. A análise abrangerá diversos aspectos, desde a análise de produtos mais vendidos até a identificação de gargalos no processo de entrega, passando pela análise de comportamento do cliente e a segmentação de público. 
-    https://github.com/enzoschitini/Data-Science-Portfolio
-
-    A análise exploratória dos dados será realizada utilizando técnicas estatísticas e ferramentas de visualização de dados, permitindo a construção de dashboards e relatórios que possibilitem uma compreensão aprofundada do negócio. A partir da identificação de padrões e tendências, o projeto visa gerar recomendações estratégicas para a tomada de decisão em áreas como:
-
-    ### 1. Marketing e Vendas:  Identificar produtos e categorias com maior potencial de venda, segmentar campanhas de marketing e personalizar ofertas para o cliente.
+    col1, col2 = st.columns(2)
     
-    ## Importância:
-    A análise de dados de e-commerce é crucial para o sucesso do negócio em um mercado cada vez mais competitivo. Através da análise, as empresas podem:
+    with col1:
+        st.title("Olist - Análise de Dados do E-commerce")
+        st.write("### Identificando Oportunidades de Crescimento e Melhoria Através da Exploração de Dados de Vendas")
 
-    - ###  1. **Tomar decisões estratégicas baseadas em dados:** Em vez de depender de intuições, as empresas podem basear suas decisões em evidências concretas, aumentando a probabilidade de sucesso.
+        st.write("""
 
-    - ###  2. **Melhorar a experiência do cliente:** Identificar e solucionar problemas que prejudicam a experiência do cliente, aumentando a fidelidade e a receita.
+        Este projeto visa analisar dados de um e-commerce, com o objetivo de identificar padrões de comportamento do cliente, tendências de mercado e oportunidades de otimização. Através da exploração de dados, pretende-se obter insights valiosos sobre a performance da plataforma, a satisfação do cliente e os fatores que influenciam o sucesso das vendas. A análise abrangerá diversos aspectos, desde a análise de produtos mais vendidos até a identificação de gargalos no processo de entrega, passando pela análise de comportamento do cliente e a segmentação de público. 
+        https://github.com/enzoschitini/Data-Science-Portfolio
 
-    - ### 3. **Aumentar a lucratividade:** Otimizar processos, reduzir custos e aumentar as vendas através de decisões baseadas em dados.
+        
+        """)
 
-    - ### 4. **Concorrer em um mercado competitivo:**  A análise de dados permite que as empresas se diferenciem da concorrência e se adaptem às mudanças do mercado.
+    with col2:
+        st.image(copertina) # 'img/Enzo Schitini.png' width=800
 
-    - ### 5. **Entender o comportamento do consumidor:** Através da análise dos dados de compras, a empresa pode identificar os hábitos e preferências do cliente, personalizando a experiência e aumentando a satisfação.
-    
-     """)
     
     st.write("""
     Aqui está a tabela com as informações fornecidas:
 
-    | **Coluna**                        | **Descrição**                                                                 |
-    |------------------------------------|-------------------------------------------------------------------------------|
-    | `order_id`                        | Identificador único do pedido.                                                |
-    | `orderitemid`                     | Identificador único do item dentro do pedido.                                 |
-    | `customer_id`                     | Identificador único do cliente.                                               |
-    | `customeruniqueid`                | Identificador único do cliente (não necessariamente o mesmo que `customer_id`).|
-    | `customerzipcode_prefix`          | Prefixo do CEP do cliente.                                                    |
-    | `customer_city`                   | Cidade do cliente.                                                           |
-    | `customer_state`                  | Estado do cliente.                                                           |
-    | `product_id`                      | Identificador único do produto.                                               |
-    | `productcategoryname`             | Nome da categoria do produto.                                                 |
-    | `productnamelenght`               | Comprimento do nome do produto (em caracteres).                               |
-    | `productdescriptionlenght`        | Comprimento da descrição do produto (em caracteres).                          |
-    | `productphotosqty`                | Quantidade de fotos do produto.                                               |
-    | `productweightg`                  | Peso do produto (em gramas).                                                  |
-    | `productlengthcm`                 | Comprimento do produto (em centímetros).                                      |
-    | `productheightcm`                 | Altura do produto (em centímetros).                                           |
-    | `productwidthcm`                  | Largura do produto (em centímetros).                                          |
-    | `seller_id`                       | Identificador único do vendedor.                                              |
-    | `seller_city`                     | Cidade do vendedor.                                                          |
-    | `seller_state`                    | Estado do vendedor.                                                          |
-    | `sellerzipcode_prefix`            | Prefixo do CEP do vendedor.                                                   |
-    | `payment_type`                    | Tipo de pagamento utilizado (e.g., cartão de crédito, boleto).                |
-    | `payment_sequential`              | Sequência do pagamento (e.g., 1 para o primeiro pagamento).                   |
-    | `payment_installments`            | Número de parcelas do pagamento.                                              |
-    | `price`                           | Preço do produto.                                                            |
-    | `freight_value`                   | Valor do frete.                                                              |
-    | `payment_value`                   | Valor total do pagamento.                                                     |
-    | `shippinglimitdate`               | Data limite para o envio do pedido.                                           |
-    | `orderpurchasetimestamp`          | Data e hora do pedido.                                                        |
-    | `orderstreamlit_applicationrovedat`                 | Data e hora da aprovação do pedido.                                           |
-    | `orderdeliveredcarrier_date`      | Data e hora em que o pedido foi entregue ao transportador.                    |
-    | `orderdeliveredcustomer_date`     | Data e hora em que o pedido foi entregue ao cliente.                          |
-    | `orderestimateddelivery_date`     | Data estimada de entrega do pedido.                                           |
-    | `dayofpurchase`                   | Dia da semana da compra.                                                      |
-    | `monthofpurchase`                 | Mês da compra.                                                               |
-    | `yearofpurchase`                  | Ano da compra.                                                               |
-    | `month/yearofpurchase`            | Mês e ano da compra.                                                         |
-    | `order_status`                    | Status do pedido.                                                            |
-    | `orderuniqueid`                   | Identificador único do pedido (não necessariamente o mesmo que `order_id`).   |
-
-    Essa tabela organiza e descreve as colunas de um dataset de pedidos de forma clara e padronizada.  
+    | **Coluna**                          | **Descrição**                                                                                     |
+    |-------------------------------------|---------------------------------------------------------------------------------------------------|
+    | **order_id**                        | Identificador único do pedido.                                                                    |
+    | **order_item_id**                   | ID do item dentro de um pedido específico (indica qual item é dentro do pedido).                  |
+    | **order_unique_id**                 | Um identificador único combinado para identificar cada pedido e item.                             |
+    | **order_status**                    | Status do pedido (ex.: "delivered" indica que foi entregue).                                      |
+    | **order_purchase_timestamp**        | Data e hora de compra do pedido.                                                                  |
+    | **order_approved_at**               | Data e hora em que o pagamento foi aprovado.                                                      |
+    | **order_delivered_carrier_date**    | Data em que o pedido foi entregue ao transportador.                                               |
+    | **order_delivered_customer_date**   | Data em que o pedido foi entregue ao cliente.                                                     |
+    | **order_estimated_delivery_date**   | Data estimada para a entrega do pedido.                                                           |
+    | **shipping_limit_date**             | Data limite para envio do pedido.                                                                 |
+    | **shipping_duration**               | Tempo total de envio do pedido, incluindo os dias e horas.                                        |
+    | **customer_id**                     | Identificador do cliente.                                                                         |
+    | **customer_unique_id**              | ID único que representa um cliente.                                                               |
+    | **customer_zip_code_prefix**        | Prefixo do código postal do cliente.                                                              |
+    | **customer_city**                   | Cidade do cliente.                                                                                |
+    | **customer_state**                  | Estado do cliente.                                                                                |
+    | **customer_zone**                   | Região geográfica do cliente (ex.: Sudeste, Sul, etc.).                                           |
+    | **product_id**                      | Identificador único do produto.                                                                   |
+    | **product_category_name**           | Categoria do produto.                                                                             |
+    | **product_name_lenght**             | Comprimento do nome do produto (quantidade de caracteres).                                        |
+    | **product_description_lenght**      | Comprimento da descrição do produto (quantidade de caracteres).                                   |
+    | **product_photos_qty**              | Quantidade de fotos do produto.                                                                   |
+    | **product_weight_g**                | Peso do produto em gramas.                                                                        |
+    | **product_length_cm**               | Comprimento do produto em centímetros.                                                            |
+    | **product_height_cm**               | Altura do produto em centímetros.                                                                 |
+    | **product_width_cm**                | Largura do produto em centímetros.                                                                |
+    | **Kg**                              | Peso do produto em quilogramas.                                                                   |
+    | **seller_id**                       | Identificador do vendedor.                                                                        |
+    | **seller_zip_code_prefix**          | Prefixo do código postal do vendedor.                                                             |
+    | **seller_city**                     | Cidade do vendedor.                                                                               |
+    | **seller_state**                    | Estado do vendedor.                                                                               |
+    | **seller_zone**                     | Região geográfica do vendedor.                                                                    |
+    | **payment_sequential**              | Sequência dos pagamentos relacionados ao pedido.                                                  |
+    | **payment_type**                    | Tipo de pagamento utilizado (ex.: cartão de crédito).                                             |
+    | **payment_installments**            | Quantidade de parcelas para o pagamento.                                                          |
+    | **installments_price**              | Valor de cada parcela.                                                                            |
+    | **price**                           | Preço do produto.                                                                                 |
+    | **freight_value**                   | Valor do frete.                                                                                   |
+    | **payment_value**                   | Valor total pago pelo pedido.                                                                     |
+    | **review_id**                       | Identificador único para a avaliação.                                                             |
+    | **review_score**                    | Nota dada pelo cliente para o pedido (ex.: de 1 a 5).                                             |
+    | **review_comment_title**            | Título do comentário do cliente sobre o pedido.                                                   |
+    | **review_comment_message**          | Mensagem do comentário do cliente.                                                                |
+    | **review_creation_date**            | Data de criação da avaliação.                                                                     |
+    | **review_answer_timestamp**         | Data e hora em que a avaliação foi respondida.                                                    |
+    | **day_of_purchase**                 | Dia da compra.                                                                                    |
+    | **month_of_purchase**               | Mês da compra.                                                                                    |
+    | **year_of_purchase**                | Ano da compra.                                                                                    |
+    | **month/year_of_purchase**          | Mês e ano da compra combinados.                                                                   |
+    | **purchase_approval_time**          | Tempo até a aprovação da compra.                                                                  |
+    | **difference_sought_and_expected**  | Diferença entre a entrega estimada e a efetiva.                                                   |
              
              """)
     

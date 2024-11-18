@@ -350,8 +350,50 @@ O gráfico mostra a quantidade de nascimentos ao longo do ano de 2019 em Rondôn
 
         """)
 
+    st.write('####')
+    st.write('## Mais Informações:')
+    st.write('#####')
 
+    col1, col2 = st.columns(2)
 
+    with col1:
+        st.markdown(f"""
+            <style>
+            .custom-box {{
+                border: 5px solid #F8F8FF;
+                padding: 20px;
+                border-radius: 5px;
+                margin-bottom: 20px;
+            }}
+            .blue-bold {{
+                color: blue;
+                font-weight: bold;
+            }}
+            </style>
+            <div class="custom-box">
+                <h3><span class="blue-bold">GitHub</span> Repositório</h3>
+                <h5><a href="https://example.com" target="_blank" style="text-decoration: none; color: inherit;">clique aqui</a></h5>
+            </div>
+            """, unsafe_allow_html=True)
 
+    with col2:
+        st.markdown(f"""
+            <style>
+            .custom-box {{
+                border: 5px solid #F8F8FF;
+                padding: 20px;
+                border-radius: 5px;
+                margin-bottom: 20px;
+            }}
+            .blue-bold {{
+                color: blue;
+                font-weight: bold;
+            }}
+            </style>
+            <div class="custom-box">
+                <h3><span class="blue-bold">Kaggle</span> Notebook</h3>
+                <h5><a href="https://example.com" target="_blank" style="text-decoration: none; color: inherit;">clique aqui</a></h5>
+            </div>
+            """, unsafe_allow_html=True)
 
     

@@ -79,6 +79,8 @@ O conjunto de dados pode ser encontrado no site do governo brasileiro e segue po
         https://github.com/enzoschitini/Data-Science-Portfolio
 
         """)
+    
+    st.video('video/Olist Video.mp4')
 
 
 

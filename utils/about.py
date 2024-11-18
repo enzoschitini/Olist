@@ -113,6 +113,7 @@ O gráfico mostra a quantidade de nascimentos ao longo do ano de 2019 em Rondôn
                   
              """)
     
+    st.write('### Veja mais ↓')
     with st.expander('Preparação dos dados e análise exploratória'):
         st.write("""
     
@@ -221,6 +222,7 @@ O gráfico mostra a quantidade de nascimentos ao longo do ano de 2019 em Rondôn
                   
              """)
     
+    st.write('### Veja mais ↓')
     with st.expander('Preparação dos dados e análise exploratória'):
         st.write("""
 
@@ -261,7 +263,7 @@ O gráfico mostra a quantidade de nascimentos ao longo do ano de 2019 em Rondôn
 ## Formulas
 #####
 
-![](https://media.licdn.com/dms/image/v2/D5612AQGTWZtZzbXyHA/article-inline_image-shrink_1500_2232/article-inline_image-shrink_1500_2232/0/1721195567492?e=1735776000&v=beta&t=9vLZBrov8c6Xs2WIlOg6pPPmMZFU5lhejHq_a9XbDto)
+![](https://raw.githubusercontent.com/enzoschitini/Olist/refs/heads/streamlit/img/f1.png)
 
 ## Como a análise será realizada:
 
@@ -275,6 +277,7 @@ O gráfico mostra a quantidade de nascimentos ao longo do ano de 2019 em Rondôn
                   
              """)
     
+    st.write('### Veja mais ↓')
     with st.expander('Preparação dos dados e análise exploratória'):
         st.write("""
 
@@ -307,6 +310,7 @@ O gráfico mostra a quantidade de nascimentos ao longo do ano de 2019 em Rondôn
                   
              """)
     
+    st.write('### Veja mais ↓')
     with st.expander('Preparação dos dados e análise exploratória'):
         st.write("""
 
@@ -338,6 +342,7 @@ O gráfico mostra a quantidade de nascimentos ao longo do ano de 2019 em Rondôn
                   
              """)
     
+    st.write('### Veja mais ↓')
     with st.expander('Preparação dos dados e análise exploratória'):
         st.write("""
 

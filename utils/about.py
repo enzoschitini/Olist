@@ -20,19 +20,6 @@ Uma pesquisa abrangente sobre tendências demográficas e de saúde em 2019 no e
 
 **Data Science** Portfólio | *27 Abril 2024* - *03 junho 2024*
 
-######
-             
-![](https://raw.githubusercontent.com/enzoschitini/Olist/refs/heads/streamlit/img/Enzo%20Schitini.png)
-
-##### [Enzo Schitini](https://www.linkedin.com/in/enzoschitini/) - Data Scientist • Expert Bubble.io • UX & UI @ Nugus creator
-
-
-######
-
-Este projeto visa analisar dados de um e-commerce, com o objetivo de identificar padrões de comportamento do cliente, tendências de mercado e oportunidades de otimização. Através da exploração de dados, pretende-se obter insights valiosos sobre a performance da plataforma, a satisfação do cliente e os fatores que influenciam o sucesso das vendas. A análise abrangerá diversos aspectos, desde a análise de produtos mais vendidos até a identificação de gargalos no processo de entrega, passando pela análise de comportamento do cliente e a segmentação de público. 
-######
-https://github.com/enzoschitini/Data-Science-Portfolio
-
 ---
 
 ![](https://raw.githubusercontent.com/enzoschitini/Olist/refs/heads/streamlit/img/cover.png)
@@ -56,6 +43,14 @@ Usaremos abordagens estatísticas e analíticas para identificar correlações, 
 
 ######
 
+### Importância do Projeto
+
+A análise dos dados do SINASC para Rondônia em 2019 é vital para entender melhor as condições de nascimento e saúde materno-infantil no estado. As informações derivadas desse estudo podem auxiliar gestores públicos, pesquisadores e profissionais de saúde na tomada de decisões informadas, visando a melhoria contínua dos serviços de saúde e o bem-estar da população.
+
+Ao fornecer uma visão detalhada sobre os nascimentos, este projeto contribui para um entendimento mais profundo das dinâmicas de saúde e demografia de Rondônia, promovendo ações mais eficazes e direcionadas no campo da saúde pública.
+
+######
+
 ### Contexto e origem dos Dados do SINASC em Rondônia - 2019
 
 O Sistema de Informação sobre Nascidos Vivos (SINASC) é uma base de dados administrada pelo Ministério da Saúde do Brasil, que tem como objetivo coletar e disponibilizar informações detalhadas sobre todos os nascimentos ocorridos no país. No âmbito do estado de Rondônia, o SINASC fornece dados abrangentes e específicos sobre os nascimentos ocorridos no ano de 2019, sendo uma fonte crucial para análises de saúde pública, planejamento e avaliação de políticas sociais.
@@ -64,21 +59,22 @@ Os dados utilizados neste projeto foram extraídos do portal do governo, mais pr
 
 O conjunto de dados pode ser encontrado no site do governo brasileiro e segue políticas de privacidade, o que significa que não há nomes de pessoas ou qualquer coisa que nos permita saber quem são os indivíduos.
 
-![](https://media.licdn.com/dms/image/v2/D5612AQE76Xz3ennuWg/article-inline_image-shrink_1500_2232/article-inline_image-shrink_1500_2232/0/1721183271678?e=1735776000&v=beta&t=32OR12vK97itnlRHz60ogvc_GfHg3Dh-SvHGZCgr00Q)
-
              
 ######
+
+### Desenvolvedor:
              
-### Importância do Projeto
+![](https://raw.githubusercontent.com/enzoschitini/Olist/refs/heads/streamlit/img/Enzo%20Schitini.png)
 
-A análise dos dados do SINASC para Rondônia em 2019 é vital para entender melhor as condições de nascimento e saúde materno-infantil no estado. As informações derivadas desse estudo podem auxiliar gestores públicos, pesquisadores e profissionais de saúde na tomada de decisões informadas, visando a melhoria contínua dos serviços de saúde e o bem-estar da população.
+##### [Enzo Schitini](https://www.linkedin.com/in/enzoschitini/) - Data Scientist • Expert Bubble.io • UX & UI @ Nugus creator
 
-Ao fornecer uma visão detalhada sobre os nascimentos, este projeto contribui para um entendimento mais profundo das dinâmicas de saúde e demografia de Rondônia, promovendo ações mais eficazes e direcionadas no campo da saúde pública.
 
-### Metodologia
-
-A análise será conduzida utilizando técnicas estatísticas e de visualização de dados para identificar padrões e anomalias. Será empregado o Python como ferramentas de manipulação e análise dos dados, na limpeza e preparação dos dados para garantir a qualidade das análises e do modelo de Machine Learning.
 ######
+
+Este projeto visa analisar dados de um e-commerce, com o objetivo de identificar padrões de comportamento do cliente, tendências de mercado e oportunidades de otimização. Através da exploração de dados, pretende-se obter insights valiosos sobre a performance da plataforma, a satisfação do cliente e os fatores que influenciam o sucesso das vendas. A análise abrangerá diversos aspectos, desde a análise de produtos mais vendidos até a identificação de gargalos no processo de entrega, passando pela análise de comportamento do cliente e a segmentação de público. 
+######
+https://github.com/enzoschitini/Data-Science-Portfolio
+             
 ---       
     """)
 
@@ -372,7 +368,7 @@ O gráfico mostra a quantidade de nascimentos ao longo do ano de 2019 em Rondôn
             </style>
             <div class="custom-box">
                 <h3><span class="blue-bold">GitHub</span> Repositório</h3>
-                <h5><a href="https://example.com" target="_blank" style="text-decoration: none; color: inherit;">clique aqui</a></h5>
+                <h5><a href="https://github.com/enzoschitini/Olist/tree/main" target="_blank" style="text-decoration: none; color: inherit;">clique aqui</a></h5>
             </div>
             """, unsafe_allow_html=True)
 
@@ -392,8 +388,23 @@ O gráfico mostra a quantidade de nascimentos ao longo do ano de 2019 em Rondôn
             </style>
             <div class="custom-box">
                 <h3><span class="blue-bold">Kaggle</span> Notebook</h3>
-                <h5><a href="https://example.com" target="_blank" style="text-decoration: none; color: inherit;">clique aqui</a></h5>
+                <h5><a href="https://www.kaggle.com/code/enzoschitini/brazilian-e-commerce-analysis-olist" target="_blank" style="text-decoration: none; color: inherit;">clique aqui</a></h5>
             </div>
             """, unsafe_allow_html=True)
 
     
+    st.write("""
+
+            ### Metodologia
+
+            A análise será conduzida utilizando técnicas estatísticas e de visualização de dados para identificar padrões e anomalias. Será empregado o Python como ferramentas de manipulação e análise dos dados, na limpeza e preparação dos dados para garantir a qualidade das análises e do modelo de Machine Learning.
+            ######
+                        
+            ### Algoritmo: Informações sobre o sistema
+             
+            A análise foi conduzida utilizando Python como ferramentas de manipulação e análise dos dados, na limpeza e preparação dos dados para garantir a qualidade das análises e do modelo de Machine Learning. Além deste arquivo que necessita da GPU T4 para melhor desempenho, temos dois arquivos .py, um para o modelo de Machine Learning e outro para entender a estrutura dos dados. Ao todo, o tempo de execução leva cerca de 57.6s no Kaggle.
+            
+            - [Licença de uso: O algoritmo é de livre acesso a qualquer pessoa que queira estudar ou ler os resultados da pesquisa]()
+            - [Aplicação Streamlit]()
+            - [Acesse aqui aos dados ainda não tratados do Sinasc]()
+""")

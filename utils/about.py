@@ -260,29 +260,77 @@ O gráfico mostra a quantidade de nascimentos ao longo do ano de 2019 em Rondôn
     st.write("""
 #####
              
-## Formulas
+## Fórmula de desempenho
 #####
 
-![](https://raw.githubusercontent.com/enzoschitini/Olist/refs/heads/streamlit/img/f1.png)
+![](https://raw.githubusercontent.com/enzoschitini/Olist/refs/heads/streamlit/img/f2.png)
 
-## Como a análise será realizada:
+## Avaliação das categorias com uma fórmula
 
-O gráfico mostra a quantidade de nascimentos ao longo do ano de 2019 em Rondônia. O gráfico apresenta flutuações ao longo do ano, com vários picos e vales. Isso sugere que a quantidade de nascimentos variou mês a mês. Os meses com os maiores picos podem indicar períodos de maior atividade de nascimentos, enquanto os vales podem representar momentos de menor atividade.
+Para criar uma fórmula que gere uma pontuação para avaliar se uma categoria de produto é boa ou não, podemos considerar as principais métricas fornecidas na imagem:
+             
+- **Vendas totais (1.7 milhões)** 
+- **Número de vendas (11684)**      
+- **Taxa de frete (19.86%)**
+- **Score médio (3.92)**
+- **Valor (146.09)**
+- **Preço (92.6)**
+- **Frete médio (18.39)**
 
-- **Padrões Sazonais:** Pode ser interessante investigar se existem padrões sazonais. Por exemplo, ***há mais nascimentos em determinadas estações do ano?*** Esses padrões podem estar relacionados a fatores como clima, feriados ou eventos culturais.
-- **Eventos Específicos:** Podemos verificar se algum evento específico (como feriados ou datas comemorativas) está correlacionado com os picos de nascimentos.
-
-**Impacto na Saúde Pública:** Essa análise pode ajudar a avaliar a demanda por serviços de saúde materna e neonatal em diferentes momentos do ano. Também pode fornecer insights sobre recursos necessários para atender a essas demandas.
-
+Uma abordagem poderia ser criar uma fórmula que leve em conta esses fatores, ponderando-os conforme sua importância no sucesso de uma categoria de produtos.
                   
              """)
     
     st.write('### Veja mais ↓')
-    with st.expander('Preparação dos dados e análise exploratória'):
+    with st.expander('Fórmula Proposta:'):
         st.write("""
+        ### Fórmula Proposta:
+        Vamos supor que uma pontuação mais alta é considerada melhor, e que os fatores que mais influenciam essa pontuação são:
+        
+        - **Número de vendas** (quanto mais, melhor).
+        - **Taxa de frete** (quanto menor, melhor).
+        - **Score médio** (quanto mais alto, melhor).
+        - **Preço** (um preço competitivo pode ser atrativo).
+        - **Frete médio** (quanto mais baixo, melhor).
 
-        st.expander('teste')
+        ### Pontuação (P):
+        ######
+        ![](https://raw.githubusercontent.com/enzoschitini/Olist/refs/heads/streamlit/img/f1.png)
+        
+        ######
+        #### Explicação dos componentes:
 
+        - **Vendas Totais / Número de Vendas**: A relação entre vendas totais e o número de vendas dá uma ideia do volume médio de receita por venda.
+        - **Score**: Pontuação dada pelos consumidores.
+        - **Taxa de Frete**: Penaliza taxas de frete mais altas.
+        - **Frete Médio**: Penaliza o frete alto, já que fretes menores são mais atrativos para os consumidores.
+        - **1/Preço**: Incentiva preços mais baixos.
+
+        ### Aplicando os valores da imagem:
+
+        ![image.png](https://raw.githubusercontent.com/enzoschitini/Olist/refs/heads/streamlit/img/f1.png)
+
+        Isso resultará em uma pontuação numérica que pode ser comparada com outras categorias para determinar se a categoria "Cama mesa banho" é boa em relação às métricas fornecidas.
+
+        ### Fórmula de normalização:
+
+        Para tornar a pontuação mais compreensível e numa escala de 0 a 100, podemos aplicar uma normalização ou escalonamento dos valores. Uma abordagem simples seria:
+
+        1. **Definir limites mínimos e máximos**: A pontuação mínima e máxima observada entre várias categorias de produtos (você pode ajustar esses limites com base nos dados reais).
+        2. **Normalizar**: Escalar a pontuação para a faixa de 0 a 100.
+
+        A fórmula de normalização para transformar um valor \(P\) em uma escala de 0 a 100 seria:
+        
+        ![](https://raw.githubusercontent.com/enzoschitini/Olist/refs/heads/streamlit/img/f3.png)
+
+        Como não temos outras categorias para definir \(P_{min}\) e \(P_{max}\), vou sugerir que assumamos valores razoáveis com base na distribuição dos dados:
+
+        - \(P_{min} = 0\) (pontuação mais baixa possível)
+        - \(P_{max} = 1000\) (um limite superior hipotético)
+
+        Vamos calcular a pontuação normalizada usando esses valores.
+
+        A pontuação normalizada para a categoria "Cama mesa banho" seria **53.21** em uma escala de 0 a 100. Isso torna o valor mais palpável e fácil de comparar com outras categorias.
         """)
 
 
@@ -304,14 +352,6 @@ O gráfico mostra a quantidade de nascimentos ao longo do ano de 2019 em Rondôn
 
                   
              """)
-    
-    st.write('### Veja mais ↓')
-    with st.expander('Preparação dos dados e análise exploratória'):
-        st.write("""
-
-        st.expander('teste')
-
-        """)
 
 
 

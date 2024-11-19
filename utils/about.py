@@ -343,13 +343,10 @@ Uma abordagem poderia ser criar uma fórmula que leve em conta esses fatores, po
              
 ## Uploads - Atualizações
 
-O gráfico mostra a quantidade de nascimentos ao longo do ano de 2019 em Rondônia. O gráfico apresenta flutuações ao longo do ano, com vários picos e vales. Isso sugere que a quantidade de nascimentos variou mês a mês. Os meses com os maiores picos podem indicar períodos de maior atividade de nascimentos, enquanto os vales podem representar momentos de menor atividade.
-
-- **Padrões Sazonais:** Pode ser interessante investigar se existem padrões sazonais. Por exemplo, ***há mais nascimentos em determinadas estações do ano?*** Esses padrões podem estar relacionados a fatores como clima, feriados ou eventos culturais.
-- **Eventos Específicos:** Podemos verificar se algum evento específico (como feriados ou datas comemorativas) está correlacionado com os picos de nascimentos.
-
-**Impacto na Saúde Pública:** Essa análise pode ajudar a avaliar a demanda por serviços de saúde materna e neonatal em diferentes momentos do ano. Também pode fornecer insights sobre recursos necessários para atender a essas demandas.
-
+Desde que terminei de desenvolver este Dashboard com dados Olist, tive ideias para melhorá-lo, aqui estão algumas que talvez você verá nas próximas versões:
+             
+- **Marketing Funnel by Olist:** Analisar os dados do funil de vendas do Olist.
+- **Análise geográfica com mapas:** Usar o Folium para gerar mapas.
                   
              """)
 

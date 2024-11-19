@@ -3,6 +3,10 @@ Este projeto de análise dos dados de e-commerce Olist é uma iniciativa fundame
 
 
 
+https://github.com/user-attachments/assets/3832f283-95b0-4497-8db4-b281b586397b
+
+
+
 
 
 

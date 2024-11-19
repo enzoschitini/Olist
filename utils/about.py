@@ -322,13 +322,19 @@ O gráfico mostra a quantidade de nascimentos ao longo do ano de 2019 em Rondôn
              
 ## Execute no seu computador
 
-O gráfico mostra a quantidade de nascimentos ao longo do ano de 2019 em Rondônia. O gráfico apresenta flutuações ao longo do ano, com vários picos e vales. Isso sugere que a quantidade de nascimentos variou mês a mês. Os meses com os maiores picos podem indicar períodos de maior atividade de nascimentos, enquanto os vales podem representar momentos de menor atividade.
+Este aplicativo foi criado usando Streamlit e os códigos estão localizados em um repositório GitHub não no branch principal, mas sim no branch streamlit. Aqui tudo o que você fará é baixar uma cópia para o seu computador e executar no VScode. Os arquivos são:
+             
+- **olist.py** O arquivo inicial é o que precisamos para iniciar o aplicativo
 
-- **Padrões Sazonais:** Pode ser interessante investigar se existem padrões sazonais. Por exemplo, ***há mais nascimentos em determinadas estações do ano?*** Esses padrões podem estar relacionados a fatores como clima, feriados ou eventos culturais.
-- **Eventos Específicos:** Podemos verificar se algum evento específico (como feriados ou datas comemorativas) está correlacionado com os picos de nascimentos.
+Depois temos uma coleção chamada 'utils' na qual existem códigos python para fazer certas páginas funcionarem:
+             
+- **general.py** Para a página inicial
+- **pedidos.py** Onde estão todas as funções e cálculos da página de pedidos
+- **produtos.py** Onde estão todas as funções e cálculos da página com os produtos
+- **geodata** Em que são retirados dados geográficos para análise de cidades, regiões e áreas
+- **metrics.py** Todos os outros códigos compartilham certas funções de cálculos, formatação e etc. encontradas em métricas.py
 
-**Impacto na Saúde Pública:** Essa análise pode ajudar a avaliar a demanda por serviços de saúde materna e neonatal em diferentes momentos do ano. Também pode fornecer insights sobre recursos necessários para atender a essas demandas.
-
+             
                   
              """)
     
@@ -339,6 +345,22 @@ O gráfico mostra a quantidade de nascimentos ao longo do ano de 2019 em Rondôn
         st.expander('teste')
 
         """)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     st.write('####')
     st.write('### Mais Informações:')

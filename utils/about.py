@@ -431,7 +431,7 @@ Depois temos uma coleção chamada 'utils' na qual existem códigos python para 
              
             A análise foi conduzida utilizando técnicas estatísticas avançadas e métodos de visualização de dados para identificar padrões, tendências e possíveis anomalias no conjunto de dados. O Python foi empregado como a principal ferramenta para manipulação, análise e visualização, oferecendo uma ampla gama de bibliotecas como Pandas, NumPy, Matplotlib, Seaborn e Plotly. Durante o processo, foi realizada a limpeza e a preparação dos dados para garantir que as informações estivessem consistentes, completas e confiáveis, assegurando a qualidade necessária para uma análise robusta.
             
-            - [Licença de uso: O algoritmo é de livre acesso a qualquer pessoa que queira estudar ou ler os resultados da pesquisa]()
-            - [Aplicação Streamlit]()
-            - [Acesse aqui aos dados ainda não tratados do Sinasc]()
+            - [Licença de uso: O algoritmo é de livre acesso a qualquer pessoa que queira estudar ou ler os resultados da análise](https://github.com/enzoschitini/Olist/blob/streamlit/LICENCE)
+            - [Aplicação Streamlit](https://github.com/enzoschitini/Olist/tree/streamlit)
+            - [Acesse aqui aos dados ainda não tratados do Olist](https://github.com/enzoschitini/Olist/tree/main/Exploratory%20Data%20Analysis%20(EDA)/Data)
 """)

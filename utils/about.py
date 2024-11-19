@@ -426,15 +426,10 @@ Depois temos uma coleção chamada 'utils' na qual existem códigos python para 
     st.write("""
             
             ######
-
-            ### Metodologia
-
-            A análise será conduzida utilizando técnicas estatísticas e de visualização de dados para identificar padrões e anomalias. Será empregado o Python como ferramentas de manipulação e análise dos dados, na limpeza e preparação dos dados para garantir a qualidade das análises e do modelo de Machine Learning.
-            ######
                         
-            ### Algoritmo: Informações sobre o sistema
+            ### Algoritmo & Metodologia: Informações sobre o sistema
              
-            A análise foi conduzida utilizando Python como ferramentas de manipulação e análise dos dados, na limpeza e preparação dos dados para garantir a qualidade das análises e do modelo de Machine Learning. Além deste arquivo que necessita da GPU T4 para melhor desempenho, temos dois arquivos .py, um para o modelo de Machine Learning e outro para entender a estrutura dos dados. Ao todo, o tempo de execução leva cerca de 57.6s no Kaggle.
+            A análise foi conduzida utilizando técnicas estatísticas avançadas e métodos de visualização de dados para identificar padrões, tendências e possíveis anomalias no conjunto de dados. O Python foi empregado como a principal ferramenta para manipulação, análise e visualização, oferecendo uma ampla gama de bibliotecas como Pandas, NumPy, Matplotlib, Seaborn e Plotly. Durante o processo, foi realizada a limpeza e a preparação dos dados para garantir que as informações estivessem consistentes, completas e confiáveis, assegurando a qualidade necessária para uma análise robusta.
             
             - [Licença de uso: O algoritmo é de livre acesso a qualquer pessoa que queira estudar ou ler os resultados da pesquisa]()
             - [Aplicação Streamlit]()

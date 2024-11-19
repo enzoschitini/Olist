@@ -343,9 +343,23 @@ Depois temos uma coleção chamada 'utils' na qual existem códigos python para 
         [Link da branch](https://github.com/enzoschitini/Olist/tree/streamlit)
 
         
-        
-
+        ![](https://raw.githubusercontent.com/enzoschitini/Olist/refs/heads/streamlit/img/git.png)
+        #####
         """)
+
+        st.write('### Clonar o repositório:')
+        st.code("git clone https://github.com/enzoschitini/Olist.git")
+
+        st.write('### requirements.txt')
+        st.code("""
+                streamlit-option-menu
+                pandas
+                plotly
+                matplotlib
+                seaborn
+                numpy
+                xlsxwriter
+                """)
 
 
 

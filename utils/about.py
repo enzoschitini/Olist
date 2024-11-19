@@ -333,16 +333,17 @@ Depois temos uma coleção chamada 'utils' na qual existem códigos python para 
 - **produtos.py** Onde estão todas as funções e cálculos da página com os produtos
 - **geodata** Em que são retirados dados geográficos para análise de cidades, regiões e áreas
 - **metrics.py** Todos os outros códigos compartilham certas funções de cálculos, formatação e etc. encontradas em métricas.py
-
-             
                   
              """)
     
     st.write('### Veja mais ↓')
-    with st.expander('Preparação dos dados e análise exploratória'):
+    with st.expander('Como executá-lo do seu pc'):
         st.write("""
+        #### Link para acessar a Branch Streamlit:
+        [Link da branch](https://github.com/enzoschitini/Olist/tree/streamlit)
 
-        st.expander('teste')
+        
+        
 
         """)
 

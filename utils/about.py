@@ -115,44 +115,44 @@ O gráfico mostra a quantidade de nascimentos ao longo do ano de 2019 em Rondôn
     with st.expander('Preparação dos dados e análise exploratória'):
         st.write("""
 
-### Preparação dos dados
+    ### Preparação dos dados
 
-![](https://raw.githubusercontent.com/enzoschitini/Data-Science-Portfolio/refs/heads/main/01%20An%C3%A1lise%20explorat%C3%B3ria%20e%20limpeza%20de%20dados/E-commerce%20Customer%20Data%20For%20Behavior%20Analysis/Image/Schema.png)
-    
-> ##### Neste projeto temos 9 conjuntos de dados vinculados por ID. Por uma questão de organização, vamos colocá-los em uma lista, também para facilitar o acesso a esses dados em branco.
+    ![](https://raw.githubusercontent.com/enzoschitini/Data-Science-Portfolio/refs/heads/main/01%20An%C3%A1lise%20explorat%C3%B3ria%20e%20limpeza%20de%20dados/E-commerce%20Customer%20Data%20For%20Behavior%20Analysis/Image/Schema.png)
+        
+    > ##### Neste projeto temos 9 conjuntos de dados vinculados por ID. Por uma questão de organização, vamos colocá-los em uma lista, também para facilitar o acesso a esses dados em branco.
 
-#### Conjunto de dados dos clientes (olist_customers_dataset)
-![](https://raw.githubusercontent.com/enzoschitini/Olist/refs/heads/streamlit/img/EDA/conjunto%20de%20dados%20dos%20clientes.png)
+    #### Conjunto de dados dos clientes (olist_customers_dataset)
+    ![](https://raw.githubusercontent.com/enzoschitini/Olist/refs/heads/streamlit/img/EDA/conjunto%20de%20dados%20dos%20clientes.png)
 
-#### Conjunto de dados de geolocalização (olist_geolocation_dataset)
-![](https://raw.githubusercontent.com/enzoschitini/Olist/refs/heads/streamlit/img/EDA/conjunto%20de%20dados%20de%20geolocaliza%C3%A7%C3%A3o.png)
+    #### Conjunto de dados de geolocalização (olist_geolocation_dataset)
+    ![](https://raw.githubusercontent.com/enzoschitini/Olist/refs/heads/streamlit/img/EDA/conjunto%20de%20dados%20de%20geolocaliza%C3%A7%C3%A3o.png)
 
-#### Conjunto de dados de itens de pedido (olist_order_items_dataset)
-![](https://raw.githubusercontent.com/enzoschitini/Olist/refs/heads/streamlit/img/EDA/conjunto%20de%20dados%20de%20itens%20de%20pedido.png)
+    #### Conjunto de dados de itens de pedido (olist_order_items_dataset)
+    ![](https://raw.githubusercontent.com/enzoschitini/Olist/refs/heads/streamlit/img/EDA/conjunto%20de%20dados%20de%20itens%20de%20pedido.png)
 
-#### Conjunto de dados de pagamentos de pedidos (olist_order_payments_dataset)
-![](https://raw.githubusercontent.com/enzoschitini/Olist/refs/heads/streamlit/img/EDA/conjunto%20de%20dados%20de%20pagamentos%20de%20pedidos.png)
+    #### Conjunto de dados de pagamentos de pedidos (olist_order_payments_dataset)
+    ![](https://raw.githubusercontent.com/enzoschitini/Olist/refs/heads/streamlit/img/EDA/conjunto%20de%20dados%20de%20pagamentos%20de%20pedidos.png)
 
-#### Conjunto de análises de pedidos (olist_order_reviews_dataset)
-![](https://raw.githubusercontent.com/enzoschitini/Olist/refs/heads/streamlit/img/EDA/conjunto%20de%20dados%20de%20an%C3%A1lises%20de%20pedidos.png)
+    #### Conjunto de análises de pedidos (olist_order_reviews_dataset)
+    ![](https://raw.githubusercontent.com/enzoschitini/Olist/refs/heads/streamlit/img/EDA/conjunto%20de%20dados%20de%20an%C3%A1lises%20de%20pedidos.png)
 
-#### Conjunto de dados de pedidos (olist_orders_dataset)
-![](https://raw.githubusercontent.com/enzoschitini/Olist/refs/heads/streamlit/img/EDA/conjunto%20de%20dados%20de%20pedidos.png)
+    #### Conjunto de dados de pedidos (olist_orders_dataset)
+    ![](https://raw.githubusercontent.com/enzoschitini/Olist/refs/heads/streamlit/img/EDA/conjunto%20de%20dados%20de%20pedidos.png)
 
-#### Conjunto de dados de produtos (olist_products_dataset)
-![](https://raw.githubusercontent.com/enzoschitini/Olist/refs/heads/streamlit/img/EDA/conjunto%20de%20dados%20de%20produtos.png)
+    #### Conjunto de dados de produtos (olist_products_dataset)
+    ![](https://raw.githubusercontent.com/enzoschitini/Olist/refs/heads/streamlit/img/EDA/conjunto%20de%20dados%20de%20produtos.png)
 
-#### Conjunto de dados de vendedores (olist_sellers_dataset)
-![](https://raw.githubusercontent.com/enzoschitini/Olist/refs/heads/streamlit/img/EDA/conjunto%20de%20dados%20de%20vendedores.png)
+    #### Conjunto de dados de vendedores (olist_sellers_dataset)
+    ![](https://raw.githubusercontent.com/enzoschitini/Olist/refs/heads/streamlit/img/EDA/conjunto%20de%20dados%20de%20vendedores.png)
 
-#### Conjunto de dados da tradução do nome da categoria do produto (product_category_name_translation)
-![](https://raw.githubusercontent.com/enzoschitini/Olist/refs/heads/streamlit/img/EDA/tradu%C3%A7%C3%A3o%20do%20nome%20da%20categoria%20do%20produto.png)
+    #### Conjunto de dados da tradução do nome da categoria do produto (product_category_name_translation)
+    ![](https://raw.githubusercontent.com/enzoschitini/Olist/refs/heads/streamlit/img/EDA/tradu%C3%A7%C3%A3o%20do%20nome%20da%20categoria%20do%20produto.png)
 
----
+    ---
 
-### Entendendo a estruturas de dados e colunas:
+    ### Entendendo a estruturas de dados e colunas:
 
-![](https://raw.githubusercontent.com/enzoschitini/Olist/refs/heads/streamlit/img/EDA/info.png)
+    ![](https://raw.githubusercontent.com/enzoschitini/Olist/refs/heads/streamlit/img/EDA/info.png)
 
         
 

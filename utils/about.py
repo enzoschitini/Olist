@@ -150,6 +150,8 @@ O gráfico mostra a quantidade de nascimentos ao longo do ano de 2019 em Rondôn
 
 ### Entendendo a estruturas de dados e colunas:
 
+![]()
+
         
 
     ## 

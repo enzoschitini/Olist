@@ -148,9 +148,11 @@ O gráfico mostra a quantidade de nascimentos ao longo do ano de 2019 em Rondôn
 #### Conjunto de dados da tradução do nome da categoria do produto (product_category_name_translation)
 ![](https://raw.githubusercontent.com/enzoschitini/Olist/refs/heads/streamlit/img/EDA/tradu%C3%A7%C3%A3o%20do%20nome%20da%20categoria%20do%20produto.png)
 
+---
+
 ### Entendendo a estruturas de dados e colunas:
 
-![]()
+![](https://raw.githubusercontent.com/enzoschitini/Olist/refs/heads/streamlit/img/EDA/info.png)
 
         
 

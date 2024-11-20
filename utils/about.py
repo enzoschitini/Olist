@@ -99,8 +99,6 @@ O conjunto de dados pode ser encontrado no site do governo brasileiro e segue po
 
 #####
 
-![](https://raw.githubusercontent.com/enzoschitini/Data-Science-Portfolio/refs/heads/main/01%20An%C3%A1lise%20explorat%C3%B3ria%20e%20limpeza%20de%20dados/E-commerce%20Customer%20Data%20For%20Behavior%20Analysis/Image/Schema.png)
-
 ## Como a análise será realizada:
 
 O gráfico mostra a quantidade de nascimentos ao longo do ano de 2019 em Rondônia. O gráfico apresenta flutuações ao longo do ano, com vários picos e vales. Isso sugere que a quantidade de nascimentos variou mês a mês. Os meses com os maiores picos podem indicar períodos de maior atividade de nascimentos, enquanto os vales podem representar momentos de menor atividade.
@@ -116,7 +114,41 @@ O gráfico mostra a quantidade de nascimentos ao longo do ano de 2019 em Rondôn
     st.write('### Veja mais ↓')
     with st.expander('Preparação dos dados e análise exploratória'):
         st.write("""
+
+### Preparação dos dados
+
+![](https://raw.githubusercontent.com/enzoschitini/Data-Science-Portfolio/refs/heads/main/01%20An%C3%A1lise%20explorat%C3%B3ria%20e%20limpeza%20de%20dados/E-commerce%20Customer%20Data%20For%20Behavior%20Analysis/Image/Schema.png)
     
+> ##### Neste projeto temos 9 conjuntos de dados vinculados por ID. Por uma questão de organização, vamos colocá-los em uma lista, também para facilitar o acesso a esses dados em branco.
+
+#### Conjunto de dados dos clientes (olist_customers_dataset)
+![]()
+
+#### Conjunto de dados de geolocalização (olist_geolocation_dataset)
+![]()
+
+#### Conjunto de dados de itens de pedido (olist_order_items_dataset)
+![]()
+
+#### Conjunto de dados de pagamentos de pedidos (olist_order_payments_dataset)
+![]()
+
+#### Conjunto de análises de pedidos (olist_order_reviews_dataset)
+![]()
+
+#### Conjunto de dados de pedidos (olist_orders_dataset)
+![]()
+
+#### Conjunto de dados de produtos (olist_products_dataset)
+![]()
+
+#### Conjunto de dados de vendedores (olist_sellers_dataset)
+![]()
+
+#### Conjunto de dados da tradução do nome da categoria do produto (product_category_name_translation)
+![]()
+
+
     ## 
     Aqui está a tabela com as informações fornecidas:
 

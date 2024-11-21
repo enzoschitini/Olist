@@ -108,6 +108,8 @@ O gráfico mostra a quantidade de nascimentos ao longo do ano de 2019 em Rondôn
 
 **Impacto na Saúde Pública:** Essa análise pode ajudar a avaliar a demanda por serviços de saúde materna e neonatal em diferentes momentos do ano. Também pode fornecer insights sobre recursos necessários para atender a essas demandas.
 
+![](https://raw.githubusercontent.com/enzoschitini/Data-Science-Portfolio/refs/heads/main/01%20An%C3%A1lise%20explorat%C3%B3ria%20e%20limpeza%20de%20dados/E-commerce%20Customer%20Data%20For%20Behavior%20Analysis/Image/Schema.png)
+
                   
              """)
     
@@ -116,8 +118,6 @@ O gráfico mostra a quantidade de nascimentos ao longo do ano de 2019 em Rondôn
         st.write("""
 
     ### Preparação dos dados
-
-    ![](https://raw.githubusercontent.com/enzoschitini/Data-Science-Portfolio/refs/heads/main/01%20An%C3%A1lise%20explorat%C3%B3ria%20e%20limpeza%20de%20dados/E-commerce%20Customer%20Data%20For%20Behavior%20Analysis/Image/Schema.png)
         
     > ##### Neste projeto temos 9 conjuntos de dados vinculados por ID. Por uma questão de organização, vamos colocá-los em uma lista, também para facilitar o acesso a esses dados em branco.
 

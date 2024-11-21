@@ -22,12 +22,12 @@ https://github.com/user-attachments/assets/3832f283-95b0-4497-8db4-b281b586397b
 
 
 
-
+###
 
 
 # **Olist Insights** • Análise de Dados do E-commerce
----
-## **Identificando Oportunidades de Crescimento e Melhoria Através da Exploração de Dados de Vendas**
+
+### **Identificando Oportunidades de Crescimento e Melhoria Através da Exploração de Dados de Vendas**
 Este dashboard interativo apresenta uma análise interativa baseada nos dados do Olist, oferecendo insights sobre vendas, logística e comportamento do cliente. Por meio de visualizações claras, você poderá explorar tendências e identificar oportunidades para otimizar processos e alavancar resultados no e-commerce.             
 
 **Data Science** Portfólio | *01 Outubro 2024* - *21 Novembro 2024*
@@ -64,3 +64,13 @@ Este projeto destaca a relevância da análise de dados como uma ferramenta esse
 ### Contexto e Origem dos Dados do Olist
 
 Os dados utilizados foram disponibilizados pelo Olist no Kaggle, contendo informações reais sobre vendas, avaliações de clientes, prazos de entrega e localização. Esta base de dados é amplamente reconhecida por sua riqueza de informações e potencial para estudos na área de ciência de dados e análise de negócios.
+
+##
+
+<p align="center">
+  Enzo Schitini
+</p>
+
+<p align="center">
+  Data Scientist & Data Analyst • SQL • Expert Bubble.io • UX & UI Design @ Scituffy creator
+</p>

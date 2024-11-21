@@ -184,38 +184,10 @@ O gráfico mostra a quantidade de nascimentos ao longo do ano de 2019 em Rondôn
     | **year_of_purchase** | df['year_of_purchase'] = df['order_purchase_timestamp'].dt.year |
     | **month/year_of_purchase** | df['month/year_of_purchase'] = df['month_of_purchase'].astype(str) + '-' + df['year_of_purchase'].astype(str) |
     | **shipping_duration** | df['shipping_duration'] = df['order_delivered_customer_date'] - df['order_purchase_timestamp'] |
-    | **Duração** | xxxxx |
-    | **Duração** | xxxxx |
-    | **Duração** | xxxxx |
-    | **Duração** | xxxxx |
-    | **Duração** | xxxxx |
-    | **Duração** | xxxxx |
-    | **Duração** | xxxxx |
-    | **Duração** | xxxxx |
-    | **Duração** | xxxxx |
-    | **Duração** | xxxxx |
-    | **Duração** | xxxxx |
-    | **Duração** | xxxxx |
-    | **Duração** | xxxxx |
-    | **Duração** | xxxxx |
-    | **Duração** | xxxxx |
-    | **Duração** | xxxxx |
-    | **Duração** | xxxxx |
-    | **Duração** | xxxxx |
-    | **Duração** | xxxxx |
-    | **Duração** | xxxxx |
-    | **Duração** | xxxxx |
-    | **Duração** | xxxxx |
-    | **Duração** | xxxxx |
-    | **Duração** | xxxxx |
-    | **Duração** | xxxxx |
-                 
-    ### Visualização:
-    
-        
-
-    ## 
-    Aqui está a tabela com as informações fornecidas:
+    | **Id único para cada pedido** | df['order_unique_id'] = df['order_id'].astype(str) + '-' + df['order_item_id'].astype(str) df['order_unique_id'] = df['order_unique_id'].astype('category') |
+    | **Preço das parcelas** | df['installments_price'] = df['payment_value'].round() / df['payment_installments'].round() |
+  
+    ## Organizando final as colunas:
 
     | **Coluna**                          | **Descrição**                                                                                     |
     |-------------------------------------|---------------------------------------------------------------------------------------------------|
@@ -269,7 +241,11 @@ O gráfico mostra a quantidade de nascimentos ao longo do ano de 2019 em Rondôn
     | **year_of_purchase**                | Ano da compra.                                                                                    |
     | **month/year_of_purchase**          | Mês e ano da compra combinados.                                                                   |
     | **purchase_approval_time**          | Tempo até a aprovação da compra.                                                                  |
-    | **difference_sought_and_expected**  | Diferença entre a entrega estimada e a efetiva.                                                   |    
+    | **difference_sought_and_expected**  | Diferença entre a entrega estimada e a efetiva.                                                   |  
+    
+    #####
+    
+    ### Visualização:  
 
         """)
     

@@ -44,26 +44,31 @@ Usaremos abordagens estatísticas e analíticas para identificar correlações, 
 > 
 
 ######
-
-### Importância do Projeto
-
-A análise dos dados do SINASC para Rondônia em 2019 é vital para entender melhor as condições de nascimento e saúde materno-infantil no estado. As informações derivadas desse estudo podem auxiliar gestores públicos, pesquisadores e profissionais de saúde na tomada de decisões informadas, visando a melhoria contínua dos serviços de saúde e o bem-estar da população.
-
-Ao fornecer uma visão detalhada sobre os nascimentos, este projeto contribui para um entendimento mais profundo das dinâmicas de saúde e demografia de Rondônia, promovendo ações mais eficazes e direcionadas no campo da saúde pública.
-
-######
-
-### Contexto e origem dos Dados do SINASC em Rondônia - 2019
-
-O Sistema de Informação sobre Nascidos Vivos (SINASC) é uma base de dados administrada pelo Ministério da Saúde do Brasil, que tem como objetivo coletar e disponibilizar informações detalhadas sobre todos os nascimentos ocorridos no país. No âmbito do estado de Rondônia, o SINASC fornece dados abrangentes e específicos sobre os nascimentos ocorridos no ano de 2019, sendo uma fonte crucial para análises de saúde pública, planejamento e avaliação de políticas sociais.
-
-Os dados utilizados neste projeto foram extraídos do portal do governo, mais precisamente do Departamento de Informática do SUS (DATASUS). Essa instituição é responsável pela coleta, armazenamento e divulgação das informações de saúde no Brasil, garantindo a integridade e a precisão dos dados disponibilizados.
-
-O conjunto de dados pode ser encontrado no site do governo brasileiro e segue políticas de privacidade, o que significa que não há nomes de pessoas ou qualquer coisa que nos permita saber quem são os indivíduos.
-
-             
-######   
+  
     """)
+
+    st.video('video/Olist Video.mp4')
+
+    st.write("""
+        ### Importância do Projeto
+
+        A análise dos dados do SINASC para Rondônia em 2019 é vital para entender melhor as condições de nascimento e saúde materno-infantil no estado. As informações derivadas desse estudo podem auxiliar gestores públicos, pesquisadores e profissionais de saúde na tomada de decisões informadas, visando a melhoria contínua dos serviços de saúde e o bem-estar da população.
+
+        Ao fornecer uma visão detalhada sobre os nascimentos, este projeto contribui para um entendimento mais profundo das dinâmicas de saúde e demografia de Rondônia, promovendo ações mais eficazes e direcionadas no campo da saúde pública.
+
+        ######
+
+        ### Contexto e origem dos Dados do SINASC em Rondônia - 2019
+
+        O Sistema de Informação sobre Nascidos Vivos (SINASC) é uma base de dados administrada pelo Ministério da Saúde do Brasil, que tem como objetivo coletar e disponibilizar informações detalhadas sobre todos os nascimentos ocorridos no país. No âmbito do estado de Rondônia, o SINASC fornece dados abrangentes e específicos sobre os nascimentos ocorridos no ano de 2019, sendo uma fonte crucial para análises de saúde pública, planejamento e avaliação de políticas sociais.
+
+        Os dados utilizados neste projeto foram extraídos do portal do governo, mais precisamente do Departamento de Informática do SUS (DATASUS). Essa instituição é responsável pela coleta, armazenamento e divulgação das informações de saúde no Brasil, garantindo a integridade e a precisão dos dados disponibilizados.
+
+        O conjunto de dados pode ser encontrado no site do governo brasileiro e segue políticas de privacidade, o que significa que não há nomes de pessoas ou qualquer coisa que nos permita saber quem são os indivíduos.
+
+                    
+        ######  
+             """)
 
     st.write('### Desenvolvedor:')
 
@@ -80,7 +85,7 @@ O conjunto de dados pode ser encontrado no site do governo brasileiro e segue po
 
         """)
     
-    st.video('video/Olist Video.mp4')
+    
 
 
 
@@ -91,15 +96,10 @@ O conjunto de dados pode ser encontrado no site do governo brasileiro e segue po
 
 
     st.write("""
-######
+
 ---
-######
       
 ## Preparação dos dados e análise exploratória
-
-#####
-
-## Como a análise será realizada:
 
 O gráfico mostra a quantidade de nascimentos ao longo do ano de 2019 em Rondônia. O gráfico apresenta flutuações ao longo do ano, com vários picos e vales. Isso sugere que a quantidade de nascimentos variou mês a mês. Os meses com os maiores picos podem indicar períodos de maior atividade de nascimentos, enquanto os vales podem representar momentos de menor atividade.
 
@@ -258,60 +258,8 @@ O gráfico mostra a quantidade de nascimentos ao longo do ano de 2019 em Rondôn
     ![](https://raw.githubusercontent.com/enzoschitini/Olist/refs/heads/streamlit/img/EDA/cat9.png)
 
         """)
-    
-        st.image(schema)
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    st.write("""
-#####
-             
-## Insights
-#####
-
-![](https://media.licdn.com/dms/image/v2/D5612AQGTWZtZzbXyHA/article-inline_image-shrink_1500_2232/article-inline_image-shrink_1500_2232/0/1721195567492?e=1735776000&v=beta&t=9vLZBrov8c6Xs2WIlOg6pPPmMZFU5lhejHq_a9XbDto)
-
-## Como a análise será realizada:
-
-O gráfico mostra a quantidade de nascimentos ao longo do ano de 2019 em Rondônia. O gráfico apresenta flutuações ao longo do ano, com vários picos e vales. Isso sugere que a quantidade de nascimentos variou mês a mês. Os meses com os maiores picos podem indicar períodos de maior atividade de nascimentos, enquanto os vales podem representar momentos de menor atividade.
-
-- **Padrões Sazonais:** Pode ser interessante investigar se existem padrões sazonais. Por exemplo, ***há mais nascimentos em determinadas estações do ano?*** Esses padrões podem estar relacionados a fatores como clima, feriados ou eventos culturais.
-- **Eventos Específicos:** Podemos verificar se algum evento específico (como feriados ou datas comemorativas) está correlacionado com os picos de nascimentos.
-
-**Impacto na Saúde Pública:** Essa análise pode ajudar a avaliar a demanda por serviços de saúde materna e neonatal em diferentes momentos do ano. Também pode fornecer insights sobre recursos necessários para atender a essas demandas.
-
-                  
-             """)
-    
-    st.write('### Veja mais ↓')
-    with st.expander('Preparação dos dados e análise exploratória'):
-        st.write("""
-
-        st.expander('teste')
-
-        """)
 
 
 
@@ -342,11 +290,6 @@ O gráfico mostra a quantidade de nascimentos ao longo do ano de 2019 em Rondôn
 
     st.write("""
 #####
-             
-## Fórmula de desempenho
-#####
-
-![](https://raw.githubusercontent.com/enzoschitini/Olist/refs/heads/streamlit/img/f2.png)
 
 ## Avaliação das categorias com uma fórmula
 

@@ -153,6 +153,14 @@ O gráfico mostra a quantidade de nascimentos ao longo do ano de 2019 em Rondôn
     ### Entendendo a estruturas de dados e colunas:
 
     ![](https://raw.githubusercontent.com/enzoschitini/Olist/refs/heads/streamlit/img/EDA/info.png)
+    
+    #####
+                 
+    ## Dados faltantes:
+    
+    Entre os conjuntos de dados que possuem dados nulos estão: olist_order_reviews_dataset.csv -> (dfs[4]); olist_orders_dataset.csv -> (dfs[5]); olist_products_dataset.csv -> (dfs[6]). Agora vamos analisá-los para entender melhor como são e pensar em como removê-los.
+
+
 
         
 

@@ -162,6 +162,16 @@ O gráfico mostra a quantidade de nascimentos ao longo do ano de 2019 em Rondôn
 
     ![](https://raw.githubusercontent.com/enzoschitini/Olist/refs/heads/streamlit/img/EDA/dados%20nulos%20tabela.png)
     
+    ![](https://raw.githubusercontent.com/enzoschitini/Olist/refs/heads/streamlit/img/EDA/dados%20faltantes%20grafico.png)
+    
+    #### Agora vamos analisar os dados nulos de cada Data Frame da lista
+    
+    - **olist_order_reviews_dataset.csv** -> (dfs[4]) -> existem duas colunas que possuem muitos dados nulos. Portanto não é mais possível reparar essas colunas, basta removê-las.
+    - **olist_orders_dataset.csv** -> (dfs[5]) & olist_products_dataset.csv -> (dfs[6]) -> Essas colunas, no entanto, não possuem tantos dados nulos e eles estão espalhadas entre os outros registros. Portanto pode ser uma perda de tempo recuperar esses dados nulos, até porque são poucos. Portanto, não precisamos deletar a coluna inteira, apenas as nulas são suficientes.
+
+    #####
+                 
+    ### Visualização:
         
 
     ## 

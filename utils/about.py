@@ -39,9 +39,6 @@ Além disso, este projeto é uma oportunidade prática de aplicar conceitos de c
 - **Produtos e Categorias** Análise detalhada sobre os produtos mais vendidos, categorias populares e desempenho por segmento.
 - **Análise Geográfica** Exploração de dados regionais para identificar os estados e cidades com maior potencial de crescimento no e-commerce.
 
-> Além disso, exploraremos o impacto das variáveis sociorraciais nas condições de nascimento e nos indivíduos
-> 
-
 ######
   
     """)

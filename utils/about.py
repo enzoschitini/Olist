@@ -71,10 +71,12 @@ Além disso, este projeto é uma oportunidade prática de aplicar conceitos de c
         st.write('![](https://raw.githubusercontent.com/enzoschitini/Olist/refs/heads/streamlit/img/Enzo%20Schitini.png)')
     with col2:
         st.write("""
-        ##### [Enzo Schitini](https://www.linkedin.com/in/enzoschitini/) - Data Scientist • Expert Bubble.io • UX & UI @ Nugus creator
-        Este projeto visa analisar dados de um e-commerce, com o objetivo de identificar padrões de comportamento do cliente, tendências de mercado e oportunidades de otimização. Através da exploração de dados, pretende-se obter insights valiosos sobre a performance da plataforma, a satisfação do cliente e os fatores que influenciam o sucesso das vendas. A análise abrangerá diversos aspectos, desde a análise de produtos mais vendidos até a identificação de gargalos no processo de entrega, passando pela análise de comportamento do cliente e a segmentação de público. 
-        ######
-        https://github.com/enzoschitini/Data-Science-Portfolio
+        ##### [Enzo Schitini - Linkedin](https://www.linkedin.com/in/enzoschitini/)
+        Minha conexão com os dados do Olist começou há algum tempo, quando realizei uma análise mais simples focada em EDA e tratamento de dados. Naquele momento, minha intenção era explorar a estrutura da base e praticar abordagens iniciais para entender melhor como o e-commerce funciona. Foi uma experiência enriquecedora, mas ficou claro que o potencial daquela base ia muito além de uma análise exploratória básica.
+    
+        Sempre admirei a proposta da Olist de conectar pequenos e médios vendedores ao universo digital. Essa visão de democratizar o acesso ao e-commerce me inspirou a revisitar o projeto com um objetivo maior: criar algo que unisse profundidade analítica e um formato mais acessível, como um dashboard interativo. A ideia foi transformar os dados em algo realmente funcional, que ajudasse a revelar oportunidades, destacar desafios e, ao mesmo tempo, celebrar a riqueza que esses dados oferecem.
+        
+        Este projeto é mais do que um exercício técnico. É uma forma de aprofundar minha compreensão sobre o mercado e reforçar minha conexão com uma marca que admiro. Trabalhar nesse dashboard tem sido desafiador e inspirador, e espero que ele não só entregue valor analítico, mas também represente o cuidado e o respeito que tenho pelos dados e pela proposta da Olist.
 
         """)
     

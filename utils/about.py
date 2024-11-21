@@ -14,7 +14,7 @@ def about(olist):
 # **Olist Insights** • Análise de Dados do E-commerce
 ---
 ## **Identificando Oportunidades de Crescimento e Melhoria Através da Exploração de Dados de Vendas**
-Este dashboard interativo apresenta uma análise interativa baseada nos dados do Olist, oferecendo insights sobre vendas, logística e comportamento do cliente. Por meio de visualizações claras, você poderá explorar tendências e identificar oportunidades para otimizar processos e alavancar resultados no e-commerce.             
+Este dashboard apresenta uma análise interativa baseada nos dados do Olist, oferecendo insights sobre vendas, logística e comportamento do cliente. Por meio de visualizações claras, você poderá explorar tendências e identificar oportunidades para otimizar processos e alavancar resultados no e-commerce.  
 
 **Data Science** Portfólio | *01 Outubro 2024* - *21 Novembro 2024*
 

@@ -10,7 +10,7 @@ https://github.com/user-attachments/assets/3832f283-95b0-4497-8db4-b281b586397b
 
 
 
-| ** **                          | ** **                                                                                     |
+| **Links**                          | **Descrição**                                                                                     |
 |-------------------------------------|---------------------------------------------------------------------------------------------------|
 | ![](https://raw.githubusercontent.com/enzoschitini/Olist/refs/heads/streamlit/img/olistlogo.png) **Dashboard no Streamlit**                   | ID do item dentro de um pedido específico (indica qual item é dentro do pedido). |
 | **Análise Exploratória**                        | Identificador único do pedido. |

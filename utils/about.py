@@ -14,11 +14,9 @@ def about(olist):
 # **Olist Insights** • Análise de Dados do E-commerce
 ---
 ## **Identificando Oportunidades de Crescimento e Melhoria Através da Exploração de Dados de Vendas**
+Este dashboard interativo apresenta uma análise interativa baseada nos dados do Olist, oferecendo insights sobre vendas, logística e comportamento do cliente. Por meio de visualizações claras, você poderá explorar tendências e identificar oportunidades para otimizar processos e alavancar resultados no e-commerce.             
 
-*Diz algorítimo de Machine Learning • 03 Junho 2024*
-Uma pesquisa abrangente sobre tendências demográficas e de saúde em 2019 no estado de Rondônia, no Brasil. Comecemos por analisar os dados do sistema de informação sobre nascidos vivos (SINASC), o objetivo é realizar uma análise aprofundada do tema, este projeto visa encontrar ideias e responder a uma série de questões cruciais.
-
-**Data Science** Portfólio | *27 Abril 2024* - *03 junho 2024*
+**Data Science** Portfólio | *01 Outubro 2024* - *21 Novembro 2024*
 
 ---
 
@@ -28,17 +26,18 @@ Uma pesquisa abrangente sobre tendências demográficas e de saúde em 2019 no e
 
 ### O que você vai encontrar nesta análise? 👋
 
-Vamos explorar os dados do *Sistema de Informação sobre Nascidos Vivos (SINASC)* relativos aos recém-nascidos nascidos no estado de Rondônia, Brasil, no ano de 2019. Assim que a análise exploratória for concluída, prosseguiremos para identificar insights e avaliar a saúde pública no estado.
+O projeto Olist Insights foi desenvolvido para explorar de forma abrangente os dados disponibilizados pelo Olist, utilizando técnicas de análise e visualização de dados para transformar informações brutas em insights estratégicos. O dashboard é estruturado para responder perguntas-chave sobre vendas, logística, produtos, comportamento do cliente e avaliações, permitindo uma compreensão detalhada do funcionamento de uma operação de e-commerce.
 
+Com base em colunas que abrangem desde características de pedidos até dados geográficos e de avaliação, o objetivo é fornecer ferramentas que auxiliem na tomada de decisões mais assertivas. A análise permite identificar gargalos logísticos, avaliar a experiência do cliente com base em comentários e notas, entender o impacto de categorias de produtos e descobrir tendências regionais que podem direcionar estratégias de marketing e logística.
 
-Usaremos abordagens estatísticas e analíticas para identificar correlações, padrões e associações entre variáveis, além disso vamos criar um Modelo de Machine Learning para fazer inferências de dados faltantes.
+Além disso, este projeto é uma oportunidade prática de aplicar conceitos de ciência de dados ao mundo real, com foco no entendimento de como cada aspecto do e-commerce contribui para o sucesso da operação como um todo. Seja para otimizar o tempo de entrega, priorizar categorias mais lucrativas ou expandir para regiões específicas, o Olist Insights se apresenta como uma ferramenta valiosa para quem deseja alavancar resultados no comércio eletrônico.
 
 ### Os pilares da análise:
 
-- **Visão Geral** Entender melhor as raças e o nível educacional das mães.
-- **Pedidos e Encomendas** Entender melhor as raças e o nível educacional das mães.
-- **Produtos e Categorias** Analisaremos as menores de idade, meninas que constroem família antes dos 18 anos.
-- **Análise Geográfica** O que nos diz a escolha do parto entre cesariana ou parto vaginal?
+- **Visão Geral** Uma introdução ao comportamento geral das vendas, com métricas como receita total, número de pedidos e avaliações médias.
+- **Pedidos e Encomendas** Insights sobre o comportamento dos clientes, prazos de entrega, e padrões de compra ao longo do tempo.
+- **Produtos e Categorias** Análise detalhada sobre os produtos mais vendidos, categorias populares e desempenho por segmento.
+- **Análise Geográfica** Exploração de dados regionais para identificar os estados e cidades com maior potencial de crescimento no e-commerce.
 
 > Além disso, exploraremos o impacto das variáveis sociorraciais nas condições de nascimento e nos indivíduos
 > 
@@ -52,19 +51,13 @@ Usaremos abordagens estatísticas e analíticas para identificar correlações, 
     st.write("""
         ### Importância do Projeto
 
-        A análise dos dados do SINASC para Rondônia em 2019 é vital para entender melhor as condições de nascimento e saúde materno-infantil no estado. As informações derivadas desse estudo podem auxiliar gestores públicos, pesquisadores e profissionais de saúde na tomada de decisões informadas, visando a melhoria contínua dos serviços de saúde e o bem-estar da população.
-
-        Ao fornecer uma visão detalhada sobre os nascimentos, este projeto contribui para um entendimento mais profundo das dinâmicas de saúde e demografia de Rondônia, promovendo ações mais eficazes e direcionadas no campo da saúde pública.
-
+        Este projeto destaca a relevância da análise de dados como uma ferramenta essencial para o crescimento de negócios digitais. Ao transformar dados brutos em insights acionáveis, empresas podem tomar decisões mais informadas, otimizando seus processos e aumentando sua competitividade no mercado. No contexto do e-commerce, a análise permite identificar gargalos na logística, entender melhor o comportamento dos clientes e alinhar os esforços de marketing com as preferências regionais. Além disso, ao explorar os dados do Olist, este dashboard exemplifica como a inteligência de mercado pode ser usada para melhorar a experiência do cliente, prever demandas futuras e aproveitar oportunidades de expansão em áreas geográficas estratégicas. Este é um exemplo prático do impacto da ciência de dados no ambiente corporativo.
+             
         ######
 
-        ### Contexto e origem dos Dados do SINASC em Rondônia - 2019
+        ### Contexto e Origem dos Dados do Olist
 
-        O Sistema de Informação sobre Nascidos Vivos (SINASC) é uma base de dados administrada pelo Ministério da Saúde do Brasil, que tem como objetivo coletar e disponibilizar informações detalhadas sobre todos os nascimentos ocorridos no país. No âmbito do estado de Rondônia, o SINASC fornece dados abrangentes e específicos sobre os nascimentos ocorridos no ano de 2019, sendo uma fonte crucial para análises de saúde pública, planejamento e avaliação de políticas sociais.
-
-        Os dados utilizados neste projeto foram extraídos do portal do governo, mais precisamente do Departamento de Informática do SUS (DATASUS). Essa instituição é responsável pela coleta, armazenamento e divulgação das informações de saúde no Brasil, garantindo a integridade e a precisão dos dados disponibilizados.
-
-        O conjunto de dados pode ser encontrado no site do governo brasileiro e segue políticas de privacidade, o que significa que não há nomes de pessoas ou qualquer coisa que nos permita saber quem são os indivíduos.
+        Os dados utilizados foram disponibilizados pelo Olist no Kaggle, contendo informações reais sobre vendas, avaliações de clientes, prazos de entrega e localização. Esta base de dados é amplamente reconhecida por sua riqueza de informações e potencial para estudos na área de ciência de dados e análise de negócios.
 
                     
         ######  
@@ -101,12 +94,11 @@ Usaremos abordagens estatísticas e analíticas para identificar correlações, 
       
 ## Preparação dos dados e análise exploratória
 
-O gráfico mostra a quantidade de nascimentos ao longo do ano de 2019 em Rondônia. O gráfico apresenta flutuações ao longo do ano, com vários picos e vales. Isso sugere que a quantidade de nascimentos variou mês a mês. Os meses com os maiores picos podem indicar períodos de maior atividade de nascimentos, enquanto os vales podem representar momentos de menor atividade.
+Como estes dados são fornecidos por uma loja online, ou seja, uma plataforma, significa que teremos algumas tabelas interligadas através de um ID. Então, para analisar esses dados temos que mesclar todas essas tabelas em uma só, levando em consideração que primeiro elas devem ser analisadas sozinhas, para que os erros sejam tratados.
 
-- **Padrões Sazonais:** Pode ser interessante investigar se existem padrões sazonais. Por exemplo, ***há mais nascimentos em determinadas estações do ano?*** Esses padrões podem estar relacionados a fatores como clima, feriados ou eventos culturais.
-- **Eventos Específicos:** Podemos verificar se algum evento específico (como feriados ou datas comemorativas) está correlacionado com os picos de nascimentos.
-
-**Impacto na Saúde Pública:** Essa análise pode ajudar a avaliar a demanda por serviços de saúde materna e neonatal em diferentes momentos do ano. Também pode fornecer insights sobre recursos necessários para atender a essas demandas.
+Um **banco de dados relacional (BDR)**   é um modelo de organização de dados que utiliza tabelas para representar informações e suas relações. É amplamente usado em sistemas corporativos e aplicações devido à sua flexibilidade, eficiência e integridade.
+             
+A imagem abaixo é um diagrama e nos ajuda a entender melhor como funciona a conexão entre as tabelas dos dados brancos do site.
 
 ![](https://raw.githubusercontent.com/enzoschitini/Data-Science-Portfolio/refs/heads/main/01%20An%C3%A1lise%20explorat%C3%B3ria%20e%20limpeza%20de%20dados/E-commerce%20Customer%20Data%20For%20Behavior%20Analysis/Image/Schema.png)
 

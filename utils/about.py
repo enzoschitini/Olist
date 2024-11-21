@@ -170,8 +170,48 @@ O gráfico mostra a quantidade de nascimentos ao longo do ano de 2019 em Rondôn
     - **olist_orders_dataset.csv** -> (dfs[5]) & olist_products_dataset.csv -> (dfs[6]) -> Essas colunas, no entanto, não possuem tantos dados nulos e eles estão espalhadas entre os outros registros. Portanto pode ser uma perda de tempo recuperar esses dados nulos, até porque são poucos. Portanto, não precisamos deletar a coluna inteira, apenas as nulas são suficientes.
 
     #####
+    
+    ### Engenharia de atributos:
+    
+    | **Nova coluna**                          | **Criação**                                                                                     |
+    |-------------------------------------|---------------------------------------------------------------------------------------------------|
+    | **Duração da aprovação do pagamento** | df['purchase_approval_time'] = df['order_approved_at'] - df['order_purchase_timestamp']|
+    | **Diferença entre a data de chegada e a data prevista** | df['difference_sought_and_expected'] = df['order_purchase_timestamp'] - df['order_delivered_customer_date']|
+    | **Peso do produto (Kg)** | df['Kg'] = df['product_weight_g'] / 1000 |
+    | **order_purchase_timestamp** | df['order_purchase_timestamp'] = pd.to_datetime(df['order_purchase_timestamp'].astype(str), format='%Y-%m-%d %H:%M:%S')|
+    | **day_of_purchase** | df['day_of_purchase'] = df['order_purchase_timestamp'].dt.day_name() |
+    | **month_of_purchase** | df['month_of_purchase'] = df['order_purchase_timestamp'].dt.month_name() |
+    | **year_of_purchase** | df['year_of_purchase'] = df['order_purchase_timestamp'].dt.year |
+    | **month/year_of_purchase** | df['month/year_of_purchase'] = df['month_of_purchase'].astype(str) + '-' + df['year_of_purchase'].astype(str) |
+    | **shipping_duration** | df['shipping_duration'] = df['order_delivered_customer_date'] - df['order_purchase_timestamp'] |
+    | **Duração** | xxxxx |
+    | **Duração** | xxxxx |
+    | **Duração** | xxxxx |
+    | **Duração** | xxxxx |
+    | **Duração** | xxxxx |
+    | **Duração** | xxxxx |
+    | **Duração** | xxxxx |
+    | **Duração** | xxxxx |
+    | **Duração** | xxxxx |
+    | **Duração** | xxxxx |
+    | **Duração** | xxxxx |
+    | **Duração** | xxxxx |
+    | **Duração** | xxxxx |
+    | **Duração** | xxxxx |
+    | **Duração** | xxxxx |
+    | **Duração** | xxxxx |
+    | **Duração** | xxxxx |
+    | **Duração** | xxxxx |
+    | **Duração** | xxxxx |
+    | **Duração** | xxxxx |
+    | **Duração** | xxxxx |
+    | **Duração** | xxxxx |
+    | **Duração** | xxxxx |
+    | **Duração** | xxxxx |
+    | **Duração** | xxxxx |
                  
     ### Visualização:
+    
         
 
     ## 

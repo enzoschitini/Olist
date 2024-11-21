@@ -1,0 +1,11 @@
+[server]
+port = 8501
+
+[browser]
+gatherUsageStats = false
+
+[theme]
+base="light"
+
+[layout]
+wideMode = true

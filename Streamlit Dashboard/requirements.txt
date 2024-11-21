@@ -1,0 +1,7 @@
+streamlit-option-menu
+pandas
+plotly
+matplotlib
+seaborn
+numpy
+xlsxwriter

@@ -246,6 +246,16 @@ O gráfico mostra a quantidade de nascimentos ao longo do ano de 2019 em Rondôn
     #####
     
     ### Visualização:  
+    
+    ![](https://raw.githubusercontent.com/enzoschitini/Olist/refs/heads/streamlit/img/EDA/cat1.png)
+    ![](https://raw.githubusercontent.com/enzoschitini/Olist/refs/heads/streamlit/img/EDA/cat2.png)
+    ![](https://raw.githubusercontent.com/enzoschitini/Olist/refs/heads/streamlit/img/EDA/cat3.png)
+    ![](https://raw.githubusercontent.com/enzoschitini/Olist/refs/heads/streamlit/img/EDA/cat4.png)
+    ![](https://raw.githubusercontent.com/enzoschitini/Olist/refs/heads/streamlit/img/EDA/cat5.png)
+    ![](https://raw.githubusercontent.com/enzoschitini/Olist/refs/heads/streamlit/img/EDA/cat6.png)
+    ![](https://raw.githubusercontent.com/enzoschitini/Olist/refs/heads/streamlit/img/EDA/cat7.png)
+    ![](https://raw.githubusercontent.com/enzoschitini/Olist/refs/heads/streamlit/img/EDA/cat8.png)
+    ![](https://raw.githubusercontent.com/enzoschitini/Olist/refs/heads/streamlit/img/EDA/cat9.png)
 
         """)
     
